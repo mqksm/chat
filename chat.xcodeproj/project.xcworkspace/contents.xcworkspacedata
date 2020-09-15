@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:chat.xcodeproj">
+      location = "group:Swift.gitignore">
+   </FileRef>
+   <FileRef
+      location = "self:">
    </FileRef>
 </Workspace>
