@@ -16,28 +16,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        logManager.printLog(log:"Application state moved from <Not running> to <Inactive>: \(#function)")
+        logManager.printLog(log:"Application state changed from <Not running> to <Inactive>: \(#function)")
         return true
     }
     
     func applicationDidBecomeActive(_ application: UIApplication) {
-        logManager.printLog(log:"Application state moved from <Inactive> to <Active>: \(#function)")
+        logManager.printLog(log:"Application state changed from <Inactive> to <Active>: \(#function)")
     }
     
     func applicationWillResignActive(_ application: UIApplication) {
-        logManager.printLog(log:"Application state moved from <Active> to <Inactive>: \(#function)")
+        logManager.printLog(log:"Application state changed from <Active> to <Inactive>: \(#function)")
     }
     
     func applicationDidEnterBackground(_ application: UIApplication) {
-        logManager.printLog(log:"Application state moved from <Inactive> to <Background>: \(#function)")
+        logManager.printLog(log:"Application state changed from <Inactive> to <Background>: \(#function)")
     }
     
     func applicationWillEnterForeground(_ application: UIApplication) {
-        logManager.printLog(log:"Application state moved from <Background> to <Inactive>: \(#function)")
+        logManager.printLog(log:"Application state changed from <Background> to <Inactive>: \(#function)")
     }
     
     func applicationWillTerminate(_ application: UIApplication) {
-        logManager.printLog(log:"Application state moved to <Not running>: \(#function)")
+        logManager.printLog(log:"Application state changed to <Not running>: \(#function)")
     }
     
 }
