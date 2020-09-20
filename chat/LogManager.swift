@@ -9,12 +9,9 @@
 import Foundation
 
 class LogManager {
-    var isTurnOn:Bool = true
-    
-    static let logCheck = LogManager()
-    private init() {}
-    
-    func printLog(log: String) {
+    static var isTurnOn:Bool = true
+        
+    class func printLog(log: String) {
         if isTurnOn {
             print(log)
         }
