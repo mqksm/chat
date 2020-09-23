@@ -22,12 +22,12 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
     
     required init?(coder:NSCoder) {
         super.init(coder:coder)
-        //        print(editButton.frame) Cвойство frame равно nil. Вью и его объекты еще не загружены, соответсвенно, свойство frame еще не определено.
+        //        print(editButton.frame) Cвойство frame равно nil. Вью и его объекты еще не загружены, соответсвенно, свойство frame еще не определено. На этом этапе еще нет ни самой view, ни аутлетов.
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(editButton.frame) // Свойство frame успешно распечатано, но параметры frame относятся к значениям из сториборда.
+        print(editButton.frame) // Свойство frame успешно распечатано, но параметры frame относятся к значениям из сториборда. На данном этапе жизненного цикла контроллера, размеры view не актуальны, т.е. не такие, какими они будут после вывода на экран.
         configureItems()
         LogManager.printLog(log: "After loadView method, viewDidLoad method was executed: \(#function)")
     }
@@ -49,7 +49,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        print(editButton.frame) // На данном этапе распечатаны корректные значения свойства frame кнопки Edit, которое относится к используемому устройству. В методе viewDidLoad значения свойств frame относятся к значениям устройства в сториборде.
+        print(editButton.frame) // На данном этапе распечатаны корректные значения свойства frame кнопки Edit, которые относятся к используемому устройству. В методе viewDidLoad значения свойств frame относятся к значениям устройства в сториборде. При вызове viewDidAppear, view уже находится в иерархии отображения и имеет актуальные размеры.
         LogManager.printLog(log: "After viewDidLayoutSubviews method, viewDidAppear method was executed: \(#function)")
     }
     
@@ -70,7 +70,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
     
     @IBAction func editPictureTapped(_ sender: UIButton) {
         let pictureChangingAlertController = UIAlertController(title: "Изменить изображение", message: nil, preferredStyle: .actionSheet)
-        pictureChangingAlertController.addAction(UIAlertAction(title: "Установить из галлереи", style: .default, handler: { _ in
+        pictureChangingAlertController.addAction(UIAlertAction(title: "Установить из галереи", style: .default, handler: { _ in
             self.choosePicture()
         }))
         
@@ -90,7 +90,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
             present(imagePicker, animated: true, completion: nil)
         }
         else {
-            showErrorAlertController(with: "К сожалению, галерея недоступна")
+            showErrorAlertController(with: "К сожалению, камера недоступна")
         }
     }
     
@@ -103,7 +103,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
             present(imagePicker, animated: true, completion: nil)
         }
         else {
-            showErrorAlertController(with: "К сожалению, камера недоступна")
+            showErrorAlertController(with: "К сожалению, галерея недоступна")
         }
     }
     
