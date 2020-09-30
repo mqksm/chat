@@ -7,19 +7,41 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EF092B0C2520A46E002BABA3 /* ConversationsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF092B0B2520A46E002BABA3 /* ConversationsListViewController.swift */; };
+		EF092B102520AAD0002BABA3 /* ConversationsListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF092B0E2520AAD0002BABA3 /* ConversationsListTableViewCell.swift */; };
+		EF092B112520AAD0002BABA3 /* ConversationsListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EF092B0F2520AAD0002BABA3 /* ConversationsListTableViewCell.xib */; };
+		EF46F4932521C90900754D91 /* ConvesationsListInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF46F4922521C90900754D91 /* ConvesationsListInfo.swift */; };
 		EF5C2605250FAE5D00B4B1F4 /* LogManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF5C2604250FAE5D00B4B1F4 /* LogManager.swift */; };
+		EF9284802523A17D0018439D /* ConfigurableViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF92847F2523A17D0018439D /* ConfigurableViewProtocol.swift */; };
+		EF9284832523A9F30018439D /* ConversationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF9284822523A9F30018439D /* ConversationViewController.swift */; };
+		EF9284872523ABC80018439D /* IncomingMessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF9284852523ABC80018439D /* IncomingMessageTableViewCell.swift */; };
+		EF9284882523ABC80018439D /* IncomingMessageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EF9284862523ABC80018439D /* IncomingMessageTableViewCell.xib */; };
+		EF92848C2523B8A70018439D /* OutcomingMessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF92848A2523B8A70018439D /* OutcomingMessageTableViewCell.swift */; };
+		EF92848D2523B8A70018439D /* OutcomingMessageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EF92848B2523B8A70018439D /* OutcomingMessageTableViewCell.xib */; };
+		EF9284912523BEC90018439D /* ConversationInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF9284902523BEC90018439D /* ConversationInfo.swift */; };
 		EFF79D76250F7C1E00815ED3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF79D75250F7C1E00815ED3 /* AppDelegate.swift */; };
-		EFF79D7A250F7C1E00815ED3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF79D79250F7C1E00815ED3 /* ViewController.swift */; };
+		EFF79D7A250F7C1E00815ED3 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF79D79250F7C1E00815ED3 /* ProfileViewController.swift */; };
 		EFF79D7D250F7C1E00815ED3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EFF79D7B250F7C1E00815ED3 /* Main.storyboard */; };
 		EFF79D7F250F7C2200815ED3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EFF79D7E250F7C2200815ED3 /* Assets.xcassets */; };
 		EFF79D82250F7C2200815ED3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EFF79D80250F7C2200815ED3 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		EF092B0B2520A46E002BABA3 /* ConversationsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationsListViewController.swift; sourceTree = "<group>"; };
+		EF092B0E2520AAD0002BABA3 /* ConversationsListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationsListTableViewCell.swift; sourceTree = "<group>"; };
+		EF092B0F2520AAD0002BABA3 /* ConversationsListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ConversationsListTableViewCell.xib; sourceTree = "<group>"; };
+		EF46F4922521C90900754D91 /* ConvesationsListInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvesationsListInfo.swift; sourceTree = "<group>"; };
 		EF5C2604250FAE5D00B4B1F4 /* LogManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogManager.swift; sourceTree = "<group>"; };
+		EF92847F2523A17D0018439D /* ConfigurableViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurableViewProtocol.swift; sourceTree = "<group>"; };
+		EF9284822523A9F30018439D /* ConversationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationViewController.swift; sourceTree = "<group>"; };
+		EF9284852523ABC80018439D /* IncomingMessageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomingMessageTableViewCell.swift; sourceTree = "<group>"; };
+		EF9284862523ABC80018439D /* IncomingMessageTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IncomingMessageTableViewCell.xib; sourceTree = "<group>"; };
+		EF92848A2523B8A70018439D /* OutcomingMessageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutcomingMessageTableViewCell.swift; sourceTree = "<group>"; };
+		EF92848B2523B8A70018439D /* OutcomingMessageTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OutcomingMessageTableViewCell.xib; sourceTree = "<group>"; };
+		EF9284902523BEC90018439D /* ConversationInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationInfo.swift; sourceTree = "<group>"; };
 		EFF79D72250F7C1E00815ED3 /* Chat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Chat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EFF79D75250F7C1E00815ED3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		EFF79D79250F7C1E00815ED3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		EFF79D79250F7C1E00815ED3 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		EFF79D7C250F7C1E00815ED3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		EFF79D7E250F7C2200815ED3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EFF79D81250F7C2200815ED3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -57,10 +79,21 @@
 			isa = PBXGroup;
 			children = (
 				EFF79D75250F7C1E00815ED3 /* AppDelegate.swift */,
-				EFF79D79250F7C1E00815ED3 /* ViewController.swift */,
+				EFF79D79250F7C1E00815ED3 /* ProfileViewController.swift */,
 				EF5C2604250FAE5D00B4B1F4 /* LogManager.swift */,
 				EFF79D7B250F7C1E00815ED3 /* Main.storyboard */,
+				EF9284822523A9F30018439D /* ConversationViewController.swift */,
+				EF92848A2523B8A70018439D /* OutcomingMessageTableViewCell.swift */,
+				EF92848B2523B8A70018439D /* OutcomingMessageTableViewCell.xib */,
+				EF9284852523ABC80018439D /* IncomingMessageTableViewCell.swift */,
+				EF9284862523ABC80018439D /* IncomingMessageTableViewCell.xib */,
+				EF092B0E2520AAD0002BABA3 /* ConversationsListTableViewCell.swift */,
+				EF092B0F2520AAD0002BABA3 /* ConversationsListTableViewCell.xib */,
+				EF92847F2523A17D0018439D /* ConfigurableViewProtocol.swift */,
+				EF092B0B2520A46E002BABA3 /* ConversationsListViewController.swift */,
 				EFF79D7E250F7C2200815ED3 /* Assets.xcassets */,
+				EF46F4922521C90900754D91 /* ConvesationsListInfo.swift */,
+				EF9284902523BEC90018439D /* ConversationInfo.swift */,
 				EFF79D80250F7C2200815ED3 /* LaunchScreen.storyboard */,
 				EFF79D83250F7C2200815ED3 /* Info.plist */,
 			);
@@ -125,7 +158,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EF9284882523ABC80018439D /* IncomingMessageTableViewCell.xib in Resources */,
+				EF092B112520AAD0002BABA3 /* ConversationsListTableViewCell.xib in Resources */,
 				EFF79D82250F7C2200815ED3 /* LaunchScreen.storyboard in Resources */,
+				EF92848D2523B8A70018439D /* OutcomingMessageTableViewCell.xib in Resources */,
 				EFF79D7F250F7C2200815ED3 /* Assets.xcassets in Resources */,
 				EFF79D7D250F7C1E00815ED3 /* Main.storyboard in Resources */,
 			);
@@ -139,7 +175,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				EF5C2605250FAE5D00B4B1F4 /* LogManager.swift in Sources */,
-				EFF79D7A250F7C1E00815ED3 /* ViewController.swift in Sources */,
+				EF46F4932521C90900754D91 /* ConvesationsListInfo.swift in Sources */,
+				EF9284872523ABC80018439D /* IncomingMessageTableViewCell.swift in Sources */,
+				EF9284832523A9F30018439D /* ConversationViewController.swift in Sources */,
+				EF9284802523A17D0018439D /* ConfigurableViewProtocol.swift in Sources */,
+				EF092B102520AAD0002BABA3 /* ConversationsListTableViewCell.swift in Sources */,
+				EF092B0C2520A46E002BABA3 /* ConversationsListViewController.swift in Sources */,
+				EF92848C2523B8A70018439D /* OutcomingMessageTableViewCell.swift in Sources */,
+				EFF79D7A250F7C1E00815ED3 /* ProfileViewController.swift in Sources */,
+				EF9284912523BEC90018439D /* ConversationInfo.swift in Sources */,
 				EFF79D76250F7C1E00815ED3 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
