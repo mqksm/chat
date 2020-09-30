@@ -46,7 +46,7 @@
                                 <state key="normal" title="Save"/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="bottom" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y4c-93-m4F">
-                                <rect key="frame" x="99" y="20" width="216" height="216.5"/>
+                                <rect key="frame" x="99" y="20" width="216" height="216"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <state key="normal" title="Edit"/>
                                 <connections>
