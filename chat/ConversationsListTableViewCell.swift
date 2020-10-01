@@ -26,6 +26,11 @@ class ConversationsListTableViewCell: UITableViewCell, ConfigurableView {
     @IBOutlet weak var initialsCellImageLabel: UILabel!
     @IBOutlet weak var pictureCellView: UIView!
     
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        profileImageView.layer.cornerRadius = profileImageView.bounds.width / 2
+        pictureCellView.layer.cornerRadius = pictureCellView.bounds.width / 2
+    }
     override func prepareForReuse() {
         super.prepareForReuse()
         backgroundColor = .clear
@@ -38,8 +43,6 @@ class ConversationsListTableViewCell: UITableViewCell, ConfigurableView {
     func configure(with model: ConversationCellModel) {
         selectionStyle = .none
         nameLabel.text = model.name
-        profileImageView.layer.cornerRadius = profileImageView.bounds.width / 2
-        pictureCellView.layer.cornerRadius = pictureCellView.bounds.width / 2
         messageLabel.font.withSize(13)
         
         if let picName = model.picture {
