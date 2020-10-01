@@ -16,6 +16,10 @@ class ConversationsListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(tableView)
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
         profileImageButton.layer.cornerRadius = profileImageButton.bounds.height / 2
     }
     
