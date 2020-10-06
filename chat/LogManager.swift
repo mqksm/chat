@@ -9,7 +9,7 @@
 import Foundation
 
 class LogManager {
-    static var isTurnOn:Bool = true
+    static var isTurnOn:Bool = false
         
     class func printLog(log: String) {
         if isTurnOn {
