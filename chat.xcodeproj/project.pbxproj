@@ -59,6 +59,39 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		EF1415FD252C79D2004EF80D /* ProfileViewController */ = {
+			isa = PBXGroup;
+			children = (
+				EFF79D79250F7C1E00815ED3 /* ProfileViewController.swift */,
+			);
+			path = ProfileViewController;
+			sourceTree = "<group>";
+		};
+		EF1415FF252C7A89004EF80D /* ConversationViewController */ = {
+			isa = PBXGroup;
+			children = (
+				EF9284822523A9F30018439D /* ConversationViewController.swift */,
+				EF92848A2523B8A70018439D /* OutcomingMessageTableViewCell.swift */,
+				EF92848B2523B8A70018439D /* OutcomingMessageTableViewCell.xib */,
+				EF9284852523ABC80018439D /* IncomingMessageTableViewCell.swift */,
+				EF9284862523ABC80018439D /* IncomingMessageTableViewCell.xib */,
+				EF9284902523BEC90018439D /* ConversationInfo.swift */,
+			);
+			path = ConversationViewController;
+			sourceTree = "<group>";
+		};
+		EF141601252C7AAA004EF80D /* ConversationsListViewController */ = {
+			isa = PBXGroup;
+			children = (
+				EF092B0E2520AAD0002BABA3 /* ConversationsListTableViewCell.swift */,
+				EF092B0F2520AAD0002BABA3 /* ConversationsListTableViewCell.xib */,
+				EF092B0B2520A46E002BABA3 /* ConversationsListViewController.swift */,
+				EF46F4922521C90900754D91 /* ConvesationsListInfo.swift */,
+				EF92847F2523A17D0018439D /* ConfigurableViewProtocol.swift */,
+			);
+			path = ConversationsListViewController;
+			sourceTree = "<group>";
+		};
 		EFF79D69250F7C1E00815ED3 = {
 			isa = PBXGroup;
 			children = (
@@ -79,21 +112,12 @@
 			isa = PBXGroup;
 			children = (
 				EFF79D75250F7C1E00815ED3 /* AppDelegate.swift */,
-				EFF79D79250F7C1E00815ED3 /* ProfileViewController.swift */,
 				EF5C2604250FAE5D00B4B1F4 /* LogManager.swift */,
 				EFF79D7B250F7C1E00815ED3 /* Main.storyboard */,
-				EF9284822523A9F30018439D /* ConversationViewController.swift */,
-				EF92848A2523B8A70018439D /* OutcomingMessageTableViewCell.swift */,
-				EF92848B2523B8A70018439D /* OutcomingMessageTableViewCell.xib */,
-				EF9284852523ABC80018439D /* IncomingMessageTableViewCell.swift */,
-				EF9284862523ABC80018439D /* IncomingMessageTableViewCell.xib */,
-				EF092B0E2520AAD0002BABA3 /* ConversationsListTableViewCell.swift */,
-				EF092B0F2520AAD0002BABA3 /* ConversationsListTableViewCell.xib */,
-				EF92847F2523A17D0018439D /* ConfigurableViewProtocol.swift */,
-				EF092B0B2520A46E002BABA3 /* ConversationsListViewController.swift */,
+				EF1415FD252C79D2004EF80D /* ProfileViewController */,
+				EF1415FF252C7A89004EF80D /* ConversationViewController */,
+				EF141601252C7AAA004EF80D /* ConversationsListViewController */,
 				EFF79D7E250F7C2200815ED3 /* Assets.xcassets */,
-				EF46F4922521C90900754D91 /* ConvesationsListInfo.swift */,
-				EF9284902523BEC90018439D /* ConversationInfo.swift */,
 				EFF79D80250F7C2200815ED3 /* LaunchScreen.storyboard */,
 				EFF79D83250F7C2200815ED3 /* Info.plist */,
 			);
