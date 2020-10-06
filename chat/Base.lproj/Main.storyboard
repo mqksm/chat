@@ -30,7 +30,7 @@
                                     <color key="titleColor" systemColor="labelColor"/>
                                 </state>
                                 <connections>
-                                    <segue destination="shD-Of-8Yo" kind="presentation" id="F37-jb-Hp1"/>
+                                    <segue destination="shD-Of-8Yo" kind="show" id="F37-jb-Hp1"/>
                                 </connections>
                             </button>
                         </barButtonItem>
@@ -66,11 +66,11 @@
             <objects>
                 <viewController id="shD-Of-8Yo" customClass="ProfileViewController" customModule="Chat" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fzm-cE-epe">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="bottom" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Hm-3e-OX3">
-                                <rect key="frame" x="79" y="20" width="256" height="254"/>
+                                <rect key="frame" x="79" y="108" width="256" height="254"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <state key="normal" title="Edit"/>
                                 <connections>
@@ -78,26 +78,26 @@
                                 </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="EyF-yP-Gmn">
-                                <rect key="frame" x="80" y="20" width="254" height="254"/>
+                                <rect key="frame" x="80" y="108" width="254" height="254"/>
                                 <color key="backgroundColor" red="0.89411764709999997" green="0.90980392160000001" blue="0.16862745100000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="EyF-yP-Gmn" secondAttribute="height" multiplier="1:1" id="HUA-e0-wxL"/>
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z9u-AY-XMX">
-                                <rect key="frame" x="56" y="743" width="302" height="35"/>
+                                <rect key="frame" x="56" y="797" width="302" height="35"/>
                                 <color key="backgroundColor" red="0.96470588239999999" green="0.96470588239999999" blue="0.96470588239999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="19"/>
                                 <state key="normal" title="Save"/>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MD" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="1" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nCu-gY-Jd6">
-                                <rect key="frame" x="181" y="126.5" width="52.5" height="41"/>
+                                <rect key="frame" x="181" y="214.5" width="52.5" height="41"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="35" translatesAutoresizingMaskIntoConstraints="NO" id="08G-ZL-dBK">
-                                <rect key="frame" x="85" y="316" width="244" height="102.5"/>
+                                <rect key="frame" x="85" y="404" width="244" height="102.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Maria Dudarenko" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Iab-kh-QWM">
                                         <rect key="frame" x="0.0" y="0.0" width="244" height="29"/>
