@@ -9,7 +9,7 @@
 import UIKit
 import Photos
 
-class ViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+class ProfileViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     
     var imagePicker = UIImagePickerController()
     
@@ -28,7 +28,6 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
     override func viewDidLoad() {
         super.viewDidLoad()
         print(editButton.frame) // Свойство frame успешно распечатано, но параметры frame относятся к значениям из сториборда. На данном этапе жизненного цикла контроллера, размеры view не актуальны, т.е. не такие, какими они будут после вывода на экран.
-        configureItems()
         LogManager.printLog(log: "After loadView method, viewDidLoad method was executed: \(#function)")
     }
     
@@ -45,6 +44,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         LogManager.printLog(log: "After viewWillLayoutSubviews method, viewDidLayoutSubviews method was executed: \(#function)")
+        configureItems()
     }
     
     override func viewDidAppear(_ animated: Bool) {
