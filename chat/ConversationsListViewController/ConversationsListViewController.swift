@@ -23,10 +23,22 @@ class ConversationsListViewController: UIViewController {
         profileImageButton.layer.cornerRadius = profileImageButton.bounds.height / 2
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tableView.reloadData()
+    }
+    
+    
+    @IBAction func settingsButtonTapped(_ sender: UIBarButtonItem) {
+        let themesVC =  ThemesViewController()
+        themesVC.title = "Settings"
+        navigationController?.pushViewController(themesVC, animated: true)
+    }
+    
     private let cellIdentifier = String(describing: ConversationsListTableViewCell.self)
     
     private lazy var tableView: UITableView = {
-        let tableView = UITableView(frame: view.frame, style: .plain)
+        let tableView = UITableView(frame: view.frame, style: .grouped)
         tableView.register(UINib(nibName: String(describing: ConversationsListTableViewCell.self), bundle: nil), forCellReuseIdentifier: cellIdentifier)
         tableView.dataSource = self
         tableView.delegate = self
@@ -37,6 +49,13 @@ class ConversationsListViewController: UIViewController {
 }
 
 extension ConversationsListViewController: UITableViewDataSource, UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        
+        if let header = view as? UITableViewHeaderFooterView {
+            header.backgroundView?.backgroundColor = Theme.current.textBackgroundColor
+        }
+    }
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return sectionNames.count

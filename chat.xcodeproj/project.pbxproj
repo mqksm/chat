@@ -12,6 +12,9 @@
 		EF092B112520AAD0002BABA3 /* ConversationsListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EF092B0F2520AAD0002BABA3 /* ConversationsListTableViewCell.xib */; };
 		EF46F4932521C90900754D91 /* ConvesationsListInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF46F4922521C90900754D91 /* ConvesationsListInfo.swift */; };
 		EF5C2605250FAE5D00B4B1F4 /* LogManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF5C2604250FAE5D00B4B1F4 /* LogManager.swift */; };
+		EF8708DD252CAB6900EFCE78 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF8708DC252CAB6900EFCE78 /* Theme.swift */; };
+		EF8FA9AE252C907A008FBFAE /* ThemesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF8FA9AC252C907A008FBFAE /* ThemesViewController.swift */; };
+		EF8FA9AF252C907A008FBFAE /* ThemesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EF8FA9AD252C907A008FBFAE /* ThemesViewController.xib */; };
 		EF9284802523A17D0018439D /* ConfigurableViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF92847F2523A17D0018439D /* ConfigurableViewProtocol.swift */; };
 		EF9284832523A9F30018439D /* ConversationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF9284822523A9F30018439D /* ConversationViewController.swift */; };
 		EF9284872523ABC80018439D /* IncomingMessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF9284852523ABC80018439D /* IncomingMessageTableViewCell.swift */; };
@@ -32,6 +35,9 @@
 		EF092B0F2520AAD0002BABA3 /* ConversationsListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ConversationsListTableViewCell.xib; sourceTree = "<group>"; };
 		EF46F4922521C90900754D91 /* ConvesationsListInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvesationsListInfo.swift; sourceTree = "<group>"; };
 		EF5C2604250FAE5D00B4B1F4 /* LogManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogManager.swift; sourceTree = "<group>"; };
+		EF8708DC252CAB6900EFCE78 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		EF8FA9AC252C907A008FBFAE /* ThemesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemesViewController.swift; sourceTree = "<group>"; };
+		EF8FA9AD252C907A008FBFAE /* ThemesViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ThemesViewController.xib; sourceTree = "<group>"; };
 		EF92847F2523A17D0018439D /* ConfigurableViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurableViewProtocol.swift; sourceTree = "<group>"; };
 		EF9284822523A9F30018439D /* ConversationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationViewController.swift; sourceTree = "<group>"; };
 		EF9284852523ABC80018439D /* IncomingMessageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomingMessageTableViewCell.swift; sourceTree = "<group>"; };
@@ -92,6 +98,16 @@
 			path = ConversationsListViewController;
 			sourceTree = "<group>";
 		};
+		EFB97927252D90AC0075F11F /* ThemesViewController */ = {
+			isa = PBXGroup;
+			children = (
+				EF8FA9AC252C907A008FBFAE /* ThemesViewController.swift */,
+				EF8FA9AD252C907A008FBFAE /* ThemesViewController.xib */,
+				EF8708DC252CAB6900EFCE78 /* Theme.swift */,
+			);
+			path = ThemesViewController;
+			sourceTree = "<group>";
+		};
 		EFF79D69250F7C1E00815ED3 = {
 			isa = PBXGroup;
 			children = (
@@ -114,6 +130,7 @@
 				EFF79D75250F7C1E00815ED3 /* AppDelegate.swift */,
 				EF5C2604250FAE5D00B4B1F4 /* LogManager.swift */,
 				EFF79D7B250F7C1E00815ED3 /* Main.storyboard */,
+				EFB97927252D90AC0075F11F /* ThemesViewController */,
 				EF1415FD252C79D2004EF80D /* ProfileViewController */,
 				EF1415FF252C7A89004EF80D /* ConversationViewController */,
 				EF141601252C7AAA004EF80D /* ConversationsListViewController */,
@@ -187,6 +204,7 @@
 				EFF79D82250F7C2200815ED3 /* LaunchScreen.storyboard in Resources */,
 				EF92848D2523B8A70018439D /* OutcomingMessageTableViewCell.xib in Resources */,
 				EFF79D7F250F7C2200815ED3 /* Assets.xcassets in Resources */,
+				EF8FA9AF252C907A008FBFAE /* ThemesViewController.xib in Resources */,
 				EFF79D7D250F7C1E00815ED3 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -202,12 +220,14 @@
 				EF46F4932521C90900754D91 /* ConvesationsListInfo.swift in Sources */,
 				EF9284872523ABC80018439D /* IncomingMessageTableViewCell.swift in Sources */,
 				EF9284832523A9F30018439D /* ConversationViewController.swift in Sources */,
+				EF8708DD252CAB6900EFCE78 /* Theme.swift in Sources */,
 				EF9284802523A17D0018439D /* ConfigurableViewProtocol.swift in Sources */,
 				EF092B102520AAD0002BABA3 /* ConversationsListTableViewCell.swift in Sources */,
 				EF092B0C2520A46E002BABA3 /* ConversationsListViewController.swift in Sources */,
 				EF92848C2523B8A70018439D /* OutcomingMessageTableViewCell.swift in Sources */,
 				EFF79D7A250F7C1E00815ED3 /* ProfileViewController.swift in Sources */,
 				EF9284912523BEC90018439D /* ConversationInfo.swift in Sources */,
+				EF8FA9AE252C907A008FBFAE /* ThemesViewController.swift in Sources */,
 				EFF79D76250F7C1E00815ED3 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -15,6 +15,11 @@ class ConversationViewController: UIViewController {
         view.addSubview(tableView)
     }
     
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        navigationController?.popViewController(animated: true)
+    }
+    
     private let incomingCellIdentifier = String(describing: IncomingMessageTableViewCell.self)
     private let outcomingCellIdentifier = String(describing: OutcomingMessageTableViewCell.self)
     

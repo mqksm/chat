@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="xRF-H4-bEf">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
@@ -21,7 +20,11 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" title="Tinkoff Chat" id="mXN-f7-dj8">
-                        <barButtonItem key="leftBarButtonItem" title="Item" image="GearIcon" id="Su7-nH-shZ"/>
+                        <barButtonItem key="leftBarButtonItem" title="Item" image="GearIcon" id="Su7-nH-shZ">
+                            <connections>
+                                <action selector="settingsButtonTapped:" destination="gvX-iB-Ggh" id="E9p-T2-s9n"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" id="QlY-4p-Tje">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="GGT-2d-oby">
                                 <rect key="frame" x="364" y="7" width="30" height="30"/>
@@ -62,7 +65,7 @@
             </objects>
             <point key="canvasLocation" x="-794" y="160"/>
         </scene>
-        <!--Profile View Controller-->
+        <!--Profile-->
         <scene sceneID="Y8S-bo-RYZ">
             <objects>
                 <viewController id="shD-Of-8Yo" customClass="ProfileViewController" customModule="Chat" customModuleProvider="target" sceneMemberID="viewController">
@@ -87,7 +90,7 @@
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z9u-AY-XMX">
                                 <rect key="frame" x="56" y="797" width="302" height="35"/>
-                                <color key="backgroundColor" red="0.96470588239999999" green="0.96470588239999999" blue="0.96470588239999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" systemColor="systemGray5Color"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="19"/>
                                 <state key="normal" title="Save"/>
                             </button>
@@ -143,7 +146,7 @@
                             <constraint firstItem="nCu-gY-Jd6" firstAttribute="centerX" secondItem="EyF-yP-Gmn" secondAttribute="centerX" id="qIS-ue-nqf"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="XnC-i4-XWi"/>
+                    <navigationItem key="navigationItem" title="Profile" id="XnC-i4-XWi"/>
                     <connections>
                         <outlet property="editButton" destination="7Hm-3e-OX3" id="fgw-wN-5bM"/>
                         <outlet property="initialsLabel" destination="nCu-gY-Jd6" id="JfH-zq-CDE"/>
@@ -165,6 +168,9 @@
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray5Color">
+            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

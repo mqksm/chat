@@ -27,7 +27,15 @@ class OutcomingMessageTableViewCell: UITableViewCell, ConfigurableView {
         //        outcomingBubbleView.layer.masksToBounds = true
     }
     
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        backgroundColor = Theme.current.backgroundColor
+        outcomingBubbleView.backgroundColor = Theme.current.outcomingMessageCellBackgroundColor
+        outcomingTextLabel.textColor = Theme.current.outcomingMessageCellTextColor
+    }
+    
     func configure(with model: ConversationCellModel) {
+        
         outcomingTextLabel.text = model.text
         //        outcomingBubbleView.layer.cornerRadius = outcomingBubbleView.bounds.width / 6
         //        outcomingBubbleView.layer.masksToBounds = true
