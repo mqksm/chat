@@ -35,6 +35,9 @@ class ConversationViewController: UIViewController {
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.separatorStyle = .none
         tableView.tableFooterView = UIView()
+        tableView.sectionHeaderHeight = 0.0;
+        tableView.sectionFooterHeight = 0.0;
+        tableView.backgroundColor = Theme.current.backgroundColor
     }
     
 }

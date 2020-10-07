@@ -40,6 +40,15 @@ enum Theme: Int {
         }
     }
     
+    //    var alertStyle: UIBlurEffect.Style {
+    //        switch self {
+    //        case .classic, .day:
+    //            return .light
+    //        case .night:
+    //            return .dark
+    //        }
+    //    }
+    
     var backgroundColor: UIColor {
         switch self {
         case .classic, .day:
@@ -140,8 +149,11 @@ enum Theme: Int {
             UITableViewHeaderFooterView.appearance().backgroundView?.backgroundColor = backgroundColor
         }
         
+        //        Appearance не позволяет изменить цвет кнопки "отмена" (UIAlertAction style: .cancel). Цвет всегда остается белым.
+        //        В фигме отсутсвует кнопка "отмена", но iOS 12 не поддерживает закрытие алера по тапу на экран.
+        //        Поэтому пока что данную часть кода закомментировал.
         //        UIView.appearance(whenContainedInInstancesOf: [UIAlertController.self]).tintColor = mainColor
-        //        UIVisualEffectView.appearance(whenContainedInInstancesOf: [UIAlertController.self]).effect = UIBlurEffect(style: .dark)
+        //        UIVisualEffectView.appearance(whenContainedInInstancesOf: [UIAlertController.self]).effect = UIBlurEffect(style: alertStyle)
         //        UILabel.appearance(whenContainedInInstancesOf: [UIAlertController.self]).textColor = textColor
         
         //        Unload all views for each `UIWindow` and add back. Useful for applying `UIAppearance` changes to existing views.
