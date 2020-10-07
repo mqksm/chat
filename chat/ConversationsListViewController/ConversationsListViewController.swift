@@ -10,12 +10,14 @@ import UIKit
 
 class ConversationsListViewController: UIViewController {
     
-    
+    @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var profileImageButton: UIButton!
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.addSubview(tableView)
+        setupTableView()
     }
     
     override func viewDidLayoutSubviews() {
@@ -28,7 +30,6 @@ class ConversationsListViewController: UIViewController {
         tableView.reloadData()
     }
     
-    
     @IBAction func settingsButtonTapped(_ sender: UIBarButtonItem) {
         let themesVC =  ThemesViewController()
         themesVC.title = "Settings"
@@ -37,14 +38,13 @@ class ConversationsListViewController: UIViewController {
     
     private let cellIdentifier = String(describing: ConversationsListTableViewCell.self)
     
-    private lazy var tableView: UITableView = {
-        let tableView = UITableView(frame: view.frame, style: .grouped)
+    func setupTableView() {
         tableView.register(UINib(nibName: String(describing: ConversationsListTableViewCell.self), bundle: nil), forCellReuseIdentifier: cellIdentifier)
         tableView.dataSource = self
         tableView.delegate = self
         tableView.tableFooterView = UIView()
-        return tableView
-    }()
+        
+    }
     
 }
 

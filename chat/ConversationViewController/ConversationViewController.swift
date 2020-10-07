@@ -10,9 +10,11 @@ import UIKit
 
 class ConversationViewController: UIViewController {
     
+    @IBOutlet weak var tableView: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.addSubview(tableView)
+        setupTableView()
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -23,8 +25,7 @@ class ConversationViewController: UIViewController {
     private let incomingCellIdentifier = String(describing: IncomingMessageTableViewCell.self)
     private let outcomingCellIdentifier = String(describing: OutcomingMessageTableViewCell.self)
     
-    private lazy var tableView: UITableView = {
-        let tableView = UITableView(frame: view.frame, style: .plain)
+    func setupTableView() {
         tableView.register(UINib(nibName: String(describing: IncomingMessageTableViewCell.self), bundle: nil), forCellReuseIdentifier: incomingCellIdentifier)
         tableView.register(UINib(nibName: String(describing: OutcomingMessageTableViewCell.self), bundle: nil), forCellReuseIdentifier: outcomingCellIdentifier)
         tableView.dataSource = self
@@ -34,8 +35,7 @@ class ConversationViewController: UIViewController {
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.separatorStyle = .none
         tableView.tableFooterView = UIView()
-        return tableView
-    }()
+    }
     
 }
 

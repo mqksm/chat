@@ -16,8 +16,19 @@
                     <view key="view" contentMode="scaleToFill" id="v44-hd-wp6">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="m1J-EP-BTe">
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                            </tableView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="SSg-jC-klj"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="SSg-jC-klj" firstAttribute="bottom" secondItem="m1J-EP-BTe" secondAttribute="bottom" id="TXf-Ta-2uE"/>
+                            <constraint firstItem="m1J-EP-BTe" firstAttribute="leading" secondItem="SSg-jC-klj" secondAttribute="leading" id="TZN-Zs-pCt"/>
+                            <constraint firstItem="m1J-EP-BTe" firstAttribute="top" secondItem="SSg-jC-klj" secondAttribute="top" id="djw-lq-Fc4"/>
+                            <constraint firstItem="SSg-jC-klj" firstAttribute="trailing" secondItem="m1J-EP-BTe" secondAttribute="trailing" id="f2y-61-Dfy"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Tinkoff Chat" id="mXN-f7-dj8">
                         <barButtonItem key="leftBarButtonItem" title="Item" image="GearIcon" id="Su7-nH-shZ">
@@ -41,6 +52,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="profileImageButton" destination="GGT-2d-oby" id="gvC-vn-Vba"/>
+                        <outlet property="tableView" destination="m1J-EP-BTe" id="3KE-tP-eHx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zvJ-Si-XH5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
