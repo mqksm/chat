@@ -129,7 +129,7 @@ enum Theme: Int {
     
     
     func apply() {
-        // saving theme value to UserDeаaults
+        // saving theme value to UserDefaults
         UserDefaults.standard.set(rawValue, forKey: Keys.selectedTheme)
         UserDefaults.standard.synchronize()
         

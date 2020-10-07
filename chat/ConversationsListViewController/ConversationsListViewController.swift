@@ -34,7 +34,7 @@ class ConversationsListViewController: UIViewController {
         let themesVC =  ThemesViewController()
         themesVC.title = "Settings"
         
-        // делегат
+        // делегат:
 //                themesVC.delegate = self
         
         // замыкание:
@@ -100,7 +100,7 @@ extension ConversationsListViewController: UITableViewDataSource, UITableViewDel
     
 }
 
-        // делегат
+        // делегат:
 //extension ConversationsListViewController: ThemePickerDelegate {
 //    func ThemeApplied() {
 //        self.tableView.backgroundColor = Theme.current.backgroundColor
