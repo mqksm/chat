@@ -38,6 +38,7 @@ class ConversationViewController: UIViewController {
         tableView.sectionHeaderHeight = 0.0;
         tableView.sectionFooterHeight = 0.0;
         tableView.backgroundColor = Theme.current.backgroundColor
+        view.backgroundColor = Theme.current.backgroundColor
     }
     
 }

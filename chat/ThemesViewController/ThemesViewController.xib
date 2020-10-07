@@ -32,7 +32,7 @@
                             <rect key="frame" x="0.0" y="0.0" width="330" height="101.5"/>
                             <state key="normal" title="Classic"/>
                             <connections>
-                                <action selector="classicThemeButtonTapped:" destination="-1" eventType="touchUpInside" id="PPo-GP-6ck"/>
+                                <action selector="classicThemeButtonTapped:" destination="-1" eventType="touchUpInside" id="uAH-1r-chA"/>
                             </connections>
                         </button>
                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Classic" translatesAutoresizingMaskIntoConstraints="NO" id="Ia3-Uy-heO">
@@ -59,7 +59,6 @@
                             <rect key="frame" x="0.0" y="0.0" width="330" height="101.5"/>
                             <state key="normal" title="Night"/>
                             <connections>
-                                <action selector="classicThemeButtonTapped:" destination="-1" eventType="touchUpInside" id="N8C-N9-aLc"/>
                                 <action selector="nightThemeButtonTapped:" destination="-1" eventType="touchUpInside" id="ApG-bo-22f"/>
                             </connections>
                         </button>
@@ -87,7 +86,6 @@
                             <rect key="frame" x="0.0" y="0.0" width="330" height="102"/>
                             <state key="normal" title="Day"/>
                             <connections>
-                                <action selector="classicThemeButtonTapped:" destination="-1" eventType="touchUpInside" id="vE7-m2-YNb"/>
                                 <action selector="dayThemeButtonTapped:" destination="-1" eventType="touchUpInside" id="Kl1-W5-xkd"/>
                             </connections>
                         </button>

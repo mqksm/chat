@@ -18,6 +18,13 @@ class ThemesViewController: UIViewController {
     @IBOutlet weak var nightImageView: UIImageView!
     @IBOutlet weak var dayImageView: UIImageView!
     
+    //    делегат:
+//        weak var delegate: ThemePickerDelegate? // В случае, если ссылка будет сильная, может возникнуть retain cycle
+    
+    //    замыкание:
+        var themeApplied: (() -> Void)?
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -36,16 +43,28 @@ class ThemesViewController: UIViewController {
     @IBAction func classicThemeButtonTapped(_ sender: UIButton) {
         Theme.classic.apply()
         setupView()
+        //    делегат:
+//            delegate?.ThemeApplied()
+        //    замыкание:
+            themeApplied?()
     }
     
     @IBAction func dayThemeButtonTapped(_ sender: UIButton) {
         Theme.day.apply()
         setupView()
+        //    делегат:
+//            delegate?.ThemeApplied()
+        //    замыкание:
+            themeApplied?()
     }
     
     @IBAction func nightThemeButtonTapped(_ sender: UIButton) {
         Theme.night.apply()
         setupView()
+        //    делегат:
+//            delegate?.ThemeApplied()
+        //    замыкание:
+            themeApplied?()
     }
     
     func setupView() {
@@ -77,3 +96,8 @@ class ThemesViewController: UIViewController {
     }
     
 }
+    //     делегат:
+//
+//protocol ThemePickerDelegate: class {
+//    func ThemeApplied()
+//}

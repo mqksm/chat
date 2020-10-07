@@ -33,6 +33,19 @@ class ConversationsListViewController: UIViewController {
     @IBAction func settingsButtonTapped(_ sender: UIBarButtonItem) {
         let themesVC =  ThemesViewController()
         themesVC.title = "Settings"
+        
+        // делегат
+//                themesVC.delegate = self
+        
+        // замыкание:
+                themesVC.themeApplied = {
+                    self.tableView.backgroundColor = Theme.current.backgroundColor
+                    self.view.backgroundColor = Theme.current.backgroundColor
+                    self.navigationController?.navigationBar.barStyle = Theme.current.barStyle
+                    self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: Theme.current.textColor]
+                    self.navigationController?.navigationBar.isTranslucent = false
+                }
+        
         navigationController?.pushViewController(themesVC, animated: true)
     }
     
@@ -43,7 +56,7 @@ class ConversationsListViewController: UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
         tableView.tableFooterView = UIView()
-        
+        view.backgroundColor = Theme.current.backgroundColor
     }
     
 }
@@ -86,3 +99,15 @@ extension ConversationsListViewController: UITableViewDataSource, UITableViewDel
     
     
 }
+
+        // делегат
+//extension ConversationsListViewController: ThemePickerDelegate {
+//    func ThemeApplied() {
+//        self.tableView.backgroundColor = Theme.current.backgroundColor
+//        self.view.backgroundColor = Theme.current.backgroundColor
+//        self.navigationController?.navigationBar.barStyle = Theme.current.barStyle
+//        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: Theme.current.textColor]
+//        self.navigationController?.navigationBar.isTranslucent = false
+//    }
+//
+//}

@@ -92,9 +92,9 @@
 		EF141601252C7AAA004EF80D /* ConversationsListViewController */ = {
 			isa = PBXGroup;
 			children = (
+				EF092B0B2520A46E002BABA3 /* ConversationsListViewController.swift */,
 				EF092B0E2520AAD0002BABA3 /* ConversationsListTableViewCell.swift */,
 				EF092B0F2520AAD0002BABA3 /* ConversationsListTableViewCell.xib */,
-				EF092B0B2520A46E002BABA3 /* ConversationsListViewController.swift */,
 				EF46F4922521C90900754D91 /* ConvesationsListInfo.swift */,
 				EF92847F2523A17D0018439D /* ConfigurableViewProtocol.swift */,
 			);

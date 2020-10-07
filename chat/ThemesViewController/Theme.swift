@@ -156,15 +156,16 @@ enum Theme: Int {
         //        UIVisualEffectView.appearance(whenContainedInInstancesOf: [UIAlertController.self]).effect = UIBlurEffect(style: alertStyle)
         //        UILabel.appearance(whenContainedInInstancesOf: [UIAlertController.self]).textColor = textColor
         
+        //        Использование замыкания убирает необходимость в данном действии.
         //        Unload all views for each `UIWindow` and add back. Useful for applying `UIAppearance` changes to existing views.
-        for _ in 0...1 { // Для iOS 12 достаточно одного вызова, для iOS 14 срабатывает при двух вызовах
-            UIApplication.shared.windows.forEach { window in
-                window.subviews.forEach { view in
-                    view.removeFromSuperview()
-                    window.addSubview(view)
-                }
-            }
-        }
+//        for _ in 0...1 { // Для iOS 12 достаточно одного вызова, для iOS 14 срабатывает при двух вызовах
+//            UIApplication.shared.windows.forEach { window in
+//                window.subviews.forEach { view in
+//                    view.removeFromSuperview()
+//                    window.addSubview(view)
+//                }
+//            }
+//        }
         
         
         
