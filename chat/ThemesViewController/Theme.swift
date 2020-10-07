@@ -142,13 +142,6 @@ enum Theme: Int {
         UITableView.appearance().backgroundColor = backgroundColor
         UILabel.appearance(whenContainedInInstancesOf: [UITableViewCell.self]).textColor = textColor
         
-        if #available(iOS 14.0, *) {
-            UITableViewHeaderFooterView.appearance().backgroundConfiguration?.backgroundColor = backgroundColor
-        }
-        else {
-            UITableViewHeaderFooterView.appearance().backgroundView?.backgroundColor = backgroundColor
-        }
-        
         //        Appearance не позволяет изменить цвет кнопки "отмена" (UIAlertAction style: .cancel). Цвет всегда остается белым.
         //        В фигме отсутсвует кнопка "отмена", но iOS 12 не поддерживает закрытие алера по тапу на экран.
         //        Поэтому пока что данную часть кода закомментировал.

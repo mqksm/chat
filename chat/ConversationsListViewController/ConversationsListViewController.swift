@@ -66,7 +66,7 @@ extension ConversationsListViewController: UITableViewDataSource, UITableViewDel
     func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         
         if let header = view as? UITableViewHeaderFooterView {
-            header.backgroundView?.backgroundColor = Theme.current.textBackgroundColor
+            header.contentView.backgroundColor = Theme.current.textBackgroundColor
         }
     }
     
