@@ -10,7 +10,14 @@ import UIKit
 
 class ConversationViewController: UIViewController {
     
+    // MARK: - Properties
+    
     @IBOutlet weak var tableView: UITableView!
+    
+    private let incomingCellIdentifier = String(describing: IncomingMessageTableViewCell.self)
+    private let outcomingCellIdentifier = String(describing: OutcomingMessageTableViewCell.self)
+    
+    // MARK: - UIViewController lifecycle methods
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,8 +29,7 @@ class ConversationViewController: UIViewController {
         navigationController?.popViewController(animated: true)
     }
     
-    private let incomingCellIdentifier = String(describing: IncomingMessageTableViewCell.self)
-    private let outcomingCellIdentifier = String(describing: OutcomingMessageTableViewCell.self)
+    // MARK: - Methods
     
     func setupTableView() {
         tableView.register(UINib(nibName: String(describing: IncomingMessageTableViewCell.self), bundle: nil), forCellReuseIdentifier: incomingCellIdentifier)
@@ -42,6 +48,8 @@ class ConversationViewController: UIViewController {
     }
     
 }
+
+// MARK: -  UITableViewDataSource, UITableViewDelegate
 
 extension ConversationViewController: UITableViewDataSource, UITableViewDelegate {
     

@@ -11,6 +11,8 @@ import Photos
 
 class ProfileViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     
+    // MARK: - Properties
+    
     var imagePicker = UIImagePickerController()
     
     @IBOutlet weak var nameLabel: UILabel!
@@ -19,6 +21,8 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
     @IBOutlet weak var saveButton: UIButton!
     @IBOutlet weak var profilePictureImageView: UIImageView!
     @IBOutlet weak var editButton: UIButton!
+    
+    // MARK: - UIViewController lifecycle methods
     
     required init?(coder:NSCoder) {
         super.init(coder:coder)
@@ -62,6 +66,8 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
         super.viewDidDisappear(animated)
         LogManager.printLog(log: "After viewWillDisappear method, viewDidDisappear method was executed: \(#function)")
     }
+    
+    // MARK: - Methods
     
     private func configureItems() {
         view.backgroundColor = Theme.current.backgroundColor

@@ -10,6 +10,8 @@ import UIKit
 
 class ThemesViewController: UIViewController {
     
+    // MARK: - Properties
+    
     @IBOutlet weak var classicView: UIView!
     @IBOutlet weak var nightView: UIView!
     @IBOutlet weak var dayView: UIView!
@@ -18,12 +20,15 @@ class ThemesViewController: UIViewController {
     @IBOutlet weak var nightImageView: UIImageView!
     @IBOutlet weak var dayImageView: UIImageView!
     
+    // MARK: Delegate
     //    делегат:
 //        weak var delegate: ThemePickerDelegate? // В случае, если ссылка будет сильная, может возникнуть retain cycle
     
+    // MARK: Closure
     //    замыкание:
         var themeApplied: (() -> Void)?
     
+    // MARK: - UIViewController lifecycle methods
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,12 +44,15 @@ class ThemesViewController: UIViewController {
         navigationController?.popViewController(animated: true)
     }
     
+    // MARK: - Methods
     
     @IBAction func classicThemeButtonTapped(_ sender: UIButton) {
         Theme.classic.apply()
         setupView()
+        // MARK: Delegate
         //    делегат:
 //            delegate?.ThemeApplied()
+        // MARK: Closure
         //    замыкание:
             themeApplied?()
     }
@@ -52,8 +60,10 @@ class ThemesViewController: UIViewController {
     @IBAction func dayThemeButtonTapped(_ sender: UIButton) {
         Theme.day.apply()
         setupView()
+        // MARK: Delegate
         //    делегат:
 //            delegate?.ThemeApplied()
+        // MARK: Closure
         //    замыкание:
             themeApplied?()
     }
@@ -61,8 +71,10 @@ class ThemesViewController: UIViewController {
     @IBAction func nightThemeButtonTapped(_ sender: UIButton) {
         Theme.night.apply()
         setupView()
+        // MARK: Delegate
         //    делегат:
 //            delegate?.ThemeApplied()
+        // MARK: Closure
         //    замыкание:
             themeApplied?()
     }
@@ -96,6 +108,7 @@ class ThemesViewController: UIViewController {
     }
     
 }
+// MARK: Delegate
     //     делегат:
 //
 //protocol ThemePickerDelegate: class {

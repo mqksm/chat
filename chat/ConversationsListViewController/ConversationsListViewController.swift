@@ -10,10 +10,13 @@ import UIKit
 
 class ConversationsListViewController: UIViewController {
     
+    // MARK: - Properties
+    
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var profileImageButton: UIButton!
+    private let cellIdentifier = String(describing: ConversationsListTableViewCell.self)
     
-    
+    // MARK: - UIViewController lifecycle methods
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,26 +33,30 @@ class ConversationsListViewController: UIViewController {
         tableView.reloadData()
     }
     
+    // MARK: - Methods
+    
     @IBAction func settingsButtonTapped(_ sender: UIBarButtonItem) {
         let themesVC =  ThemesViewController()
         themesVC.title = "Settings"
         
+    // MARK: Delegate
         // делегат:
 //                themesVC.delegate = self
         
+    // MARK: Closure
         // замыкание:
-                themesVC.themeApplied = {
-                    self.tableView.backgroundColor = Theme.current.backgroundColor
-                    self.view.backgroundColor = Theme.current.backgroundColor
-                    self.navigationController?.navigationBar.barStyle = Theme.current.barStyle
-                    self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: Theme.current.textColor]
-                    self.navigationController?.navigationBar.isTranslucent = false
+                themesVC.themeApplied = { [weak self] in
+                    self?.tableView.backgroundColor = Theme.current.backgroundColor
+                    self?.view.backgroundColor = Theme.current.backgroundColor
+                    self?.navigationController?.navigationBar.barStyle = Theme.current.barStyle
+                    self?.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: Theme.current.textColor]
+                    self?.navigationController?.navigationBar.isTranslucent = false
                 }
         
         navigationController?.pushViewController(themesVC, animated: true)
     }
     
-    private let cellIdentifier = String(describing: ConversationsListTableViewCell.self)
+    
     
     func setupTableView() {
         tableView.register(UINib(nibName: String(describing: ConversationsListTableViewCell.self), bundle: nil), forCellReuseIdentifier: cellIdentifier)
@@ -61,6 +68,7 @@ class ConversationsListViewController: UIViewController {
     
 }
 
+    // MARK: -  UITableViewDataSource, UITableViewDelegate
 extension ConversationsListViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
@@ -100,6 +108,7 @@ extension ConversationsListViewController: UITableViewDataSource, UITableViewDel
     
 }
 
+// MARK: - Delegate
         // делегат:
 //extension ConversationsListViewController: ThemePickerDelegate {
 //    func ThemeApplied() {
