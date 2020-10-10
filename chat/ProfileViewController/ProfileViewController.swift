@@ -9,18 +9,23 @@
 import UIKit
 import Photos
 
-class ProfileViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+class ProfileViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UITextViewDelegate {
     
     // MARK: - Properties
     
     var imagePicker = UIImagePickerController()
+    var isProfileEditing = false
     
-    @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var profileDescriptionLabel: UILabel!
     @IBOutlet weak var initialsLabel: UILabel!
-    @IBOutlet weak var saveButton: UIButton!
+    @IBOutlet weak var editInfoButton: UIButton!
     @IBOutlet weak var profilePictureImageView: UIImageView!
     @IBOutlet weak var editButton: UIButton!
+    @IBOutlet weak var gcdSaveButton: UIButton!
+    @IBOutlet weak var operationSaveButton: UIButton!
+    @IBOutlet weak var nameTextField: UITextField!
+    @IBOutlet weak var descriptionTextView: UITextView!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    
     
     // MARK: - UIViewController lifecycle methods
     
@@ -33,6 +38,8 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
         super.viewDidLoad()
         //        print(editButton.frame) // Свойство frame успешно распечатано, но параметры frame относятся к значениям из сториборда. На данном этапе жизненного цикла контроллера, размеры view не актуальны, т.е. не такие, какими они будут после вывода на экран.
         LogManager.printLog(log: "After loadView method, viewDidLoad method was executed: \(#function)")
+        activityIndicator.hidesWhenStopped = true
+        descriptionTextView.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -71,10 +78,58 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
     
     private func configureItems() {
         view.backgroundColor = Theme.current.backgroundColor
-        saveButton.backgroundColor = Theme.current.textBackgroundColor
         profilePictureImageView.layer.cornerRadius = profilePictureImageView.bounds.width / 2
-        saveButton.layer.cornerRadius = saveButton.bounds.height / 2
+        configureButton(button: editInfoButton)
+        configureButton(button: gcdSaveButton)
+        configureButton(button: operationSaveButton)
     }
+    
+    private func configureButton(button: UIButton) {
+        button.backgroundColor = Theme.current.textBackgroundColor
+        button.layer.cornerRadius = button.bounds.height / 2
+    }
+    
+    @IBAction func editInfoButtonTapped(_ sender: UIButton) {
+        changeItemsConfigure()
+        //        editInfoButton.isHidden = true
+        //        gcdSaveButton.isHidden = false
+        //        operationSaveButton.isHidden = false
+        //        nameTextField.isEnabled = true
+        //        descriptionTextView.isEditable = true
+    }
+    
+    
+    @IBAction func gcdSaveButtonTapped(_ sender: UIButton) {
+        changeItemsConfigure()
+    }
+    
+    @IBAction func operationSaveButtonTapped(_ sender: UIButton) {
+        changeItemsConfigure()
+    }
+    
+    func changeItemsConfigure() {
+        gcdSaveButton.isEnabled = false
+        operationSaveButton.isEnabled = false
+        isProfileEditing = !isProfileEditing
+        isProfileEditing ? editInfoButton.setTitle("Отмена", for: .normal) : editInfoButton.setTitle("Редактировать", for: .normal)
+        gcdSaveButton.isHidden = !gcdSaveButton.isHidden
+        operationSaveButton.isHidden = !operationSaveButton.isHidden
+        nameTextField.isEnabled = !nameTextField.isEnabled
+        descriptionTextView.isEditable = !descriptionTextView.isEditable
+    }
+    
+    
+    @IBAction func nameTextFieldChanged(_ sender: UITextField) {
+        gcdSaveButton.isEnabled = true
+        operationSaveButton.isEnabled = true
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) { // textViewDidChange
+        //        print(descriptionTextView.text ?? "ERROR");
+        gcdSaveButton.isEnabled = true
+        operationSaveButton.isEnabled = true
+    }
+    
     
     @IBAction func editPictureTapped(_ sender: UIButton) {
         let pictureChangingAlertController = UIAlertController(title: "Изменить изображение", message: nil, preferredStyle: .actionSheet)
