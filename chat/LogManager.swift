@@ -9,7 +9,7 @@
 import Foundation
 
 class LogManager {
-    static var isTurnOn:Bool = false
+    static var isTurnOn: Bool = false
         
     class func printLog(log: String) {
         if isTurnOn {
@@ -17,4 +17,3 @@ class LogManager {
         }
     }
 }
-

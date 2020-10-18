@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class ConversationsListViewController: UIViewController {
     
@@ -15,6 +16,10 @@ class ConversationsListViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var profileImageButton: UIButton!
     private let cellIdentifier = String(describing: ConversationsListTableViewCell.self)
+    private lazy var db = Firestore.firestore()
+    private lazy var reference = db.collection("channels")
+    private var channels = [Channel]()
+    private var channelListener: ListenerRegistration?
     
     // MARK: - UIViewController lifecycle methods
     
@@ -30,33 +35,43 @@ class ConversationsListViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        channelListener = reference.addSnapshotListener { querySnapshot, error in
+            guard let snapshot = querySnapshot else {
+                print("Error listening for channel updates: \(error?.localizedDescription ?? "No error")")
+                return
+            }
+            
+            snapshot.documentChanges.forEach { change in
+                self.handleDocumentChange(change)
+            }
+        }
+        
         tableView.reloadData()
     }
     
     // MARK: - Methods
     
     @IBAction func settingsButtonTapped(_ sender: UIBarButtonItem) {
-        let themesVC =  ThemesViewController()
+        let themesVC = ThemesViewController()
         themesVC.title = "Settings"
         
-    // MARK: Delegate
+        // MARK: Delegate
         // делегат:
-//                themesVC.delegate = self
+        //                themesVC.delegate = self
         
-    // MARK: Closure
+        // MARK: Closure
         // замыкание:
-                themesVC.themeApplied = { [weak self] in
-                    self?.tableView.backgroundColor = Theme.current.backgroundColor
-                    self?.view.backgroundColor = Theme.current.backgroundColor
-                    self?.navigationController?.navigationBar.barStyle = Theme.current.barStyle
-                    self?.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: Theme.current.textColor]
-                    self?.navigationController?.navigationBar.isTranslucent = false
-                }
+        themesVC.themeApplied = { [weak self] in
+            self?.tableView.backgroundColor = Theme.current.backgroundColor
+            self?.view.backgroundColor = Theme.current.backgroundColor
+            self?.navigationController?.navigationBar.barStyle = Theme.current.barStyle
+            self?.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: Theme.current.textColor]
+            self?.navigationController?.navigationBar.isTranslucent = false
+        }
         
         navigationController?.pushViewController(themesVC, animated: true)
     }
-    
-    
     
     func setupTableView() {
         tableView.register(UINib(nibName: String(describing: ConversationsListTableViewCell.self), bundle: nil), forCellReuseIdentifier: cellIdentifier)
@@ -66,50 +81,109 @@ class ConversationsListViewController: UIViewController {
         view.backgroundColor = Theme.current.backgroundColor
     }
     
-}
-
-    // MARK: -  UITableViewDataSource, UITableViewDelegate
-extension ConversationsListViewController: UITableViewDataSource, UITableViewDelegate {
+    // MARK: Firebase interaction
     
-    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+    @IBAction func addChannelTapped(_ sender: UIBarButtonItem) {
+        let alertController = UIAlertController(title: "Создание нового канала", message: "Введите имя нового канала", preferredStyle: .alert)
+        alertController.addTextField { textField in
+            textField.textColor = .black
+        }
+        let save = UIAlertAction(title: "Создать", style: .default) { [weak self] _ in
+            guard let textField = alertController.textFields?.first, textField.text != "" else { self?.showErrorAlertController(withText: "Название канала не должно быть пустым!")
+                return }
+            if let channelText = textField.text {
+                self?.reference.addDocument(data: ["name": channelText])
+            }
+        }
+        let cancel = UIAlertAction(title: "Отмена", style: .default, handler: nil)
+        alertController.addAction(save)
+        alertController.addAction(cancel)
+        present(alertController, animated: true, completion: nil)
+    }
+    
+    private func handleDocumentChange(_ change: DocumentChange) {
+        guard let channel = Channel(document: change.document) else {
+            return
+        }
         
-        if let header = view as? UITableViewHeaderFooterView {
-            header.contentView.backgroundColor = Theme.current.textBackgroundColor
+        switch change.type {
+        case .added:
+            addChannelToTable(channel)
+            
+        case .modified:
+            updateChannelInTable(channel)
+            
+        case .removed:
+            removeChannelFromTable(channel)
         }
     }
     
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return sectionNames.count
+    private func addChannelToTable(_ channel: Channel) {
+        guard !channels.contains(channel) else {
+            return
+        }
+        channels.append(channel)
+        channels.sort()
+        
+        guard let index = channels.firstIndex(of: channel) else {
+            return
+        }
+        tableView.insertRows(at: [IndexPath(row: index, section: 0)], with: .automatic)
     }
     
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return sectionNames[section]
+    private func updateChannelInTable(_ channel: Channel) {
+        guard let index = channels.firstIndex(of: channel) else {
+            return
+        }
+        channels[index] = channel
+        tableView.reloadRows(at: [IndexPath(row: index, section: 0)], with: .automatic)
+    }
+    
+    private func removeChannelFromTable(_ channel: Channel) {
+        guard let index = channels.firstIndex(of: channel) else {
+            return
+        }
+        channels.remove(at: index)
+        tableView.deleteRows(at: [IndexPath(row: index, section: 0)], with: .automatic)
+    }
+    
+    // MARK: Alert
+    
+    func showErrorAlertController(withText message: String) {
+        let errorAlertController = UIAlertController(title: "Ошибка", message: message, preferredStyle: .alert)
+        errorAlertController.addAction(UIAlertAction(title: "OK", style: .cancel))
+        present(errorAlertController, animated: true, completion: nil)
+    }
+}
+
+// MARK: - UITableViewDataSource, UITableViewDelegate
+extension ConversationsListViewController: UITableViewDataSource, UITableViewDelegate {
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return chats[section].count
+        return channels.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? ConversationsListTableViewCell else { return UITableViewCell() }
-        
-        let chat = chats[indexPath.section][indexPath.row]
-        cell.configure(with: chat)
+        let channel = channels[indexPath.row]
+        cell.configure(with: channel)
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let conversationVC =  ConversationViewController()
-        conversationVC.title = chats[indexPath.section][indexPath.row].name
+        let channel = channels[indexPath.row]
+        let conversationVC = ConversationViewController(channel: channel)
         navigationController?.pushViewController(conversationVC, animated: true)
     }
-    
     
 }
 
 // MARK: - Delegate
-        // делегат:
+// делегат:
 //extension ConversationsListViewController: ThemePickerDelegate {
 //    func ThemeApplied() {
 //        self.tableView.backgroundColor = Theme.current.backgroundColor

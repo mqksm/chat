@@ -15,9 +15,9 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
     
     var imagePicker = UIImagePickerController()
     var isProfileEditing = false
-    var isProfileNameChanged = false
-    var isProfileDescriptionChanged = false
-    var bottom: CGFloat = 0.0
+    var isNameChanged = false
+    var isDescriptionChanged = false
+    var top: CGFloat = 0.0
     
     @IBOutlet weak var initialsLabel: UILabel!
     @IBOutlet weak var editInfoButton: UIButton!
@@ -29,17 +29,18 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
     @IBOutlet weak var descriptionTextView: UITextView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
-    
     // MARK: - UIViewController lifecycle methods
     
-    required init?(coder:NSCoder) {
-        super.init(coder:coder)
-        //        print(editButton.frame) Cвойство frame равно nil. Вью и его объекты еще не загружены, соответсвенно, свойство frame еще не определено. На этом этапе еще нет ни самой view, ни аутлетов.
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        //        print(editButton.frame) Cвойство frame равно nil. Вью и его объекты еще не загружены, соответсвенно,
+        //        свойство frame еще не определено. На этом этапе еще нет ни самой view, ни аутлетов.
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //        print(editButton.frame) // Свойство frame успешно распечатано, но параметры frame относятся к значениям из сториборда. На данном этапе жизненного цикла контроллера, размеры view не актуальны, т.е. не такие, какими они будут после вывода на экран.
+        //        print(editButton.frame) // Свойство frame успешно распечатано, но параметры frame относятся к значениям из сториборда.
+        //        На данном этапе жизненного цикла контроллера, размеры view не актуальны, т.е. не такие, какими они будут после вывода на экран.
         LogManager.printLog(log: "After loadView method, viewDidLoad method was executed: \(#function)")
         activityIndicator.hidesWhenStopped = true
         descriptionTextView.delegate = self
@@ -68,9 +69,11 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        //        print(editButton.frame) // На данном этапе распечатаны корректные значения свойства frame кнопки Edit, которые относятся к используемому устройству. В методе viewDidLoad значения свойств frame относятся к значениям устройства в сториборде. При вызове viewDidAppear, view уже находится в иерархии отображения и имеет актуальные размеры.
+        //        print(editButton.frame) // На данном этапе распечатаны корректные значения свойства frame кнопки Edit,
+        //        которые относятся к используемому устройству. В методе viewDidLoad значения свойств frame относятся к значениям устройства в
+        //        сториборде. При вызове viewDidAppear, view уже находится в иерархии отображения и имеет актуальные размеры.
         LogManager.printLog(log: "After viewDidLayoutSubviews method, viewDidAppear method was executed: \(#function)")
-        bottom = self.view.frame.origin.y
+        top = self.view.frame.origin.y
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -130,13 +133,13 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
     }
     
     @IBAction func nameTextFieldChanged(_ sender: UITextField) {
-        isProfileNameChanged = true
+        isNameChanged = true
         gcdSaveButton.isEnabled = true
         operationSaveButton.isEnabled = true
     }
     
     func textViewDidChange(_ textView: UITextView) { // textViewDidEndEditing
-        isProfileDescriptionChanged = true
+        isDescriptionChanged = true
         gcdSaveButton.isEnabled = true
         operationSaveButton.isEnabled = true
     }
@@ -145,30 +148,30 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
     
     func saveDataToFileWithGCD() {
         guard let name = nameTextField.text, let description = descriptionTextView.text, nameTextField.text != "", descriptionTextView.text != ""
-        else { showErrorAlertController(withText: "Имя и описание профиля должны быть заполнены")
-            return }
+            else { showErrorAlertController(withText: "Имя и описание профиля должны быть заполнены")
+                return }
         
-        GCDDataManager.saveTextDataToFiles(profileVC: self, name: name, description: description, isProfileNameChanged: isProfileNameChanged, isProfileDescriptionChanged: isProfileDescriptionChanged)
+        GCDDataManager.saveTextDataToFiles(profileVC: self, name: name, description: description, isNameChanged: isNameChanged, isDescriptionChanged: isDescriptionChanged)
     }
     
     func saveDataToFileWithOperation() {
         guard let name = nameTextField.text, let description = descriptionTextView.text, nameTextField.text != "", descriptionTextView.text != ""
-        else { showErrorAlertController(withText: "Имя и описание профиля должны быть заполнены")
-            return }
+            else { showErrorAlertController(withText: "Имя и описание профиля должны быть заполнены")
+                return }
         
-        OperationDataManager.saveTextDataToFiles(profileVC: self, name: name, description: description, isProfileNameChanged: isProfileNameChanged, isProfileDescriptionChanged: isProfileDescriptionChanged)
+        OperationDataManager.saveTextDataToFiles(profileVC: self, name: name, description: description, isNameChanged: isNameChanged, isDescriptionChanged: isDescriptionChanged)
     }
     
     func loadTextData() {
         let data = GCDDataManager.loadTextDataFromFiles()
-//        let data = OperationDataManager.loadTextDataFromFiles()
+        //        let data = OperationDataManager.loadTextDataFromFiles()
         self.nameTextField.text = data.name
         self.descriptionTextView.text = data.description ?? "Description of your profile"
     }
     
     func loadPictureData() {
         if let picture = GCDDataManager.loadPictureFromFile() {
-//        if let picture = OperationDataManager.loadPictureFromFile() {
+            //        if let picture = OperationDataManager.loadPictureFromFile() {
             self.profilePictureImageView.image = picture
             self.initialsLabel.isHidden = true
         }
@@ -184,7 +187,7 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
         pictureChangingAlertController.addAction(UIAlertAction(title: "Сделать фото", style: .default, handler: { _ in
             self.takePicture()
         }))
-        pictureChangingAlertController.addAction(UIAlertAction.init(title: "Отменить", style: .cancel, handler: nil))
+        pictureChangingAlertController.addAction(UIAlertAction(title: "Отменить", style: .cancel, handler: nil))
         present(pictureChangingAlertController, animated: true, completion: nil)
     }
     
@@ -195,8 +198,7 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
             imagePicker.sourceType = .camera
             imagePicker.allowsEditing = true
             present(imagePicker, animated: true, completion: nil)
-        }
-        else {
+        } else {
             showErrorAlertController(withText: "К сожалению, камера недоступна")
         }
     }
@@ -208,13 +210,12 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
             imagePicker.sourceType = .photoLibrary
             imagePicker.allowsEditing = true
             present(imagePicker, animated: true, completion: nil)
-        }
-        else {
+        } else {
             showErrorAlertController(withText: "К сожалению, галерея недоступна")
         }
     }
     
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
         imagePicker.dismiss(animated: true, completion: nil)
         if let image = info[.originalImage] as? UIImage {
             profilePictureImageView.image = image
@@ -224,18 +225,20 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
         }
     }
     
+    //    let initials = model.name.components(separatedBy: " ").reduce("") { ($0 == "" ? "" : "\($0.first ?? " ")") + "\($1.first ?? " ")" }
+    
     // MARK: Alert
     
-    func showErrorAlertController(withText message: String){
+    func showErrorAlertController(withText message: String) {
         let errorAlertController = UIAlertController(title: "Ошибка", message: message, preferredStyle: .alert)
         errorAlertController.addAction(UIAlertAction(title: "OK", style: .cancel))
         present(errorAlertController, animated: true, completion: nil)
     }
     
-    func showGCDDataSaveErrorAlertController(){
+    func showGCDDataSaveErrorAlertController() {
         let errorAlertController = UIAlertController(title: "Ошибка", message: "Не удалось сохранить данные", preferredStyle: .alert)
         
-        let repitAction = UIAlertAction(title: "Повторить", style: .default) { action in
+        let repitAction = UIAlertAction(title: "Повторить", style: .default) { _ in
             self.saveDataToFileWithGCD()
         }
         errorAlertController.addAction(UIAlertAction(title: "OK", style: .default))
@@ -243,10 +246,10 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
         present(errorAlertController, animated: true, completion: nil)
     }
     
-    func showOperationDataSaveErrorAlertController(){
+    func showOperationDataSaveErrorAlertController() {
         let errorAlertController = UIAlertController(title: "Ошибка", message: "Не удалось сохранить данные", preferredStyle: .alert)
         
-        let repitAction = UIAlertAction(title: "Повторить", style: .default) { action in
+        let repitAction = UIAlertAction(title: "Повторить", style: .default) { _ in
             self.saveDataToFileWithOperation()
         }
         errorAlertController.addAction(UIAlertAction(title: "OK", style: .default))
@@ -254,7 +257,7 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
         present(errorAlertController, animated: true, completion: nil)
     }
     
-    func showDataSaveAlertController(){
+    func showDataSaveAlertController() {
         let alertController = UIAlertController(title: "Данные сохранены", message: nil, preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: "OK", style: .default))
         present(alertController, animated: true, completion: nil)
@@ -267,22 +270,21 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
-    
     @objc func keyboardWillShow(notification: NSNotification) {
         guard let userInfo = notification.userInfo,
-              let keyboardSize = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else {return}
+            let keyboardSize = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else {return}
         let keyboardFrame = keyboardSize.cgRectValue
-        if self.view.frame.origin.y == bottom {
+        if self.view.frame.origin.y == top {
             self.view.frame.origin.y -= keyboardFrame.height
         }
     }
     
     @objc func keyboardWillHide(notification: NSNotification) {
         guard let userInfo = notification.userInfo,
-              let keyboardSize = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else {return}
+            let keyboardSize = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else {return}
         let keyboardFrame = keyboardSize.cgRectValue
         //        self.view.frame.origin.y += keyboardFrame.height
-        if self.view.frame.origin.y == bottom - keyboardFrame.height {
+        if self.view.frame.origin.y == top - keyboardFrame.height {
             self.view.frame.origin.y += keyboardFrame.height
         }
     }
@@ -290,7 +292,5 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
-    
-    
     
 }
