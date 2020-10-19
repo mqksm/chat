@@ -17,6 +17,7 @@ class ConversationViewController: UIViewController {
     @IBOutlet weak var bottomBarView: UIView!
     @IBOutlet weak var bottomBarTextView: UITextView!
     @IBOutlet weak var hideKeyboardImageView: UIImageView!
+    @IBOutlet weak var keyboardConstraint: NSLayoutConstraint!
     
     private let channel: Channel
     private let incomingCellIdentifier = String(describing: IncomingMessageCell.self)
@@ -78,7 +79,8 @@ class ConversationViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        top = bottomBarView.frame.origin.y
+        top = view.frame.origin.y
+//        top = bottomBarView.frame.origin.y
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -148,7 +150,6 @@ class ConversationViewController: UIViewController {
     }
     
     @IBAction func sendButtonTapped(_ sender: UIButton) {
-        print("SendButtop tapped")
         guard let text = bottomBarTextView.text, text != ""
             else { print("Sending error")
                 return }
@@ -168,27 +169,28 @@ class ConversationViewController: UIViewController {
     
     @objc func keyboardWillShow(_ notification: Notification) {
         
-//        guard let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else {return}
-//        if bottomBarView.frame.origin.y == top {
-//            tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: keyboardSize.height, right: 0)
-//            bottomBarView.frame.origin.y -= keyboardSize.height
-//        }
-//        if !messages.isEmpty {
-//            DispatchQueue.main.async {
-//                self.tableView.scrollToRow(at: NSIndexPath(row: 0, section: self.messages.count - 1) as IndexPath, at: .none, animated: true)
-//            }
-//        }
-//        hideKeyboardImageView.isHidden = false
+        guard let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else {return}
+            if keyboardConstraint.constant == 0 {
+            tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: keyboardSize.height, right: 0)
+            keyboardConstraint.constant = -keyboardSize.height
+//                tableView.frame.size.height -= keyboardSize.height
+            view.layoutIfNeeded()
+                
+        }
+        if !messages.isEmpty {
+            DispatchQueue.main.async {
+                self.tableView.scrollToRow(at: NSIndexPath(row: 0, section: self.messages.count - 1) as IndexPath, at: .none, animated: true)
+            }
+        }
+        hideKeyboardImageView.isHidden = false
     }
     
     @objc func keyboardWillHide(_ notification: Notification) {
         
-//        guard let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else {return}
-//        if bottomBarView.frame.origin.y == top - keyboardSize.height {
-//            tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-//            bottomBarView.frame.origin.y += keyboardSize.height
-//        }
-//        hideKeyboardImageView.isHidden = true
+            tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        keyboardConstraint.constant = 0
+        view.layoutIfNeeded()
+        hideKeyboardImageView.isHidden = true
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
