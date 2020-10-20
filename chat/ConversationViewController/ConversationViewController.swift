@@ -81,7 +81,7 @@ class ConversationViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         top = view.frame.origin.y
-//        top = bottomBarView.frame.origin.y
+        //        top = bottomBarView.frame.origin.y
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -117,7 +117,7 @@ class ConversationViewController: UIViewController {
             }
             if !self.messages.isEmpty {
                 DispatchQueue.main.async {
-                    self.tableView.scrollToRow(at: NSIndexPath(row: 0, section: self.messages.count - 1) as IndexPath, at: .none, animated: true)
+                    self.tableView.scrollToRow(at: NSIndexPath(row: 0, section: self.messages.count - 1) as IndexPath, at: .bottom, animated: true)
                 }
             }
         }
@@ -142,7 +142,7 @@ class ConversationViewController: UIViewController {
             insertNewMessage(message)
             if !messages.isEmpty {
                 DispatchQueue.main.async {
-                    self.tableView.scrollToRow(at: NSIndexPath(row: 0, section: self.messages.count - 1) as IndexPath, at: .none, animated: false)
+                    self.tableView.scrollToRow(at: NSIndexPath(row: 0, section: self.messages.count - 1) as IndexPath, at: .bottom, animated: false)
                 }
             }
         default:
@@ -173,35 +173,30 @@ class ConversationViewController: UIViewController {
         DispatchQueue.main.async {
             if self.keyboardConstraint.constant == 0 {
                 self.tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: keyboardSize.height, right: 0)
-                
-//                UIView.animate(withDuration: 0.2, animations: {
-//                    self.keyboardConstraint.constant = -keyboardSize.height
-//                    self.tableView.contentInset.bottom = 0
-//                    self.view.layoutIfNeeded()
-//                    self.tableView.layoutIfNeeded()
-//                })
-                self.keyboardConstraint.constant = -keyboardSize.height
                 self.tableView.contentInset.bottom = 0
-                self.view.layoutIfNeeded()
-//                self.tableView.layoutIfNeeded()
+                self.tableView.layoutIfNeeded()
                 
-        }
-            if !self.messages.isEmpty {
-            
-                self.tableView.scrollToRow(at: NSIndexPath(row: 0, section: self.messages.count - 1) as IndexPath, at: .none, animated: true)
+                let duration: TimeInterval = (notification.userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey] as? NSNumber)?.doubleValue ?? 0
+                UIView.animate(withDuration: duration, animations: {
+                    self.keyboardConstraint.constant = -keyboardSize.height
+                    self.view.layoutIfNeeded()
+                })
             }
-        
+            //            if !self.messages.isEmpty {
+            //                self.tableView.scrollToRow(at: NSIndexPath(row: 0, section: self.messages.count - 1) as IndexPath, at: .bottom, animated: true)
+            //            }
             self.hideKeyboardImageView.isHidden = false
         }
     }
     
     @objc func keyboardWillHide(_ notification: Notification) {
-        
-            tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-        keyboardConstraint.constant = 0
-        view.layoutIfNeeded()
-        tableView.layoutIfNeeded()
-        hideKeyboardImageView.isHidden = true
+        DispatchQueue.main.async {
+            self.tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+            self.keyboardConstraint.constant = 0
+            self.view.layoutIfNeeded()
+            self.tableView.layoutIfNeeded()
+            self.hideKeyboardImageView.isHidden = true
+        }
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
