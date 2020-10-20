@@ -17,6 +17,7 @@ class ConversationViewController: UIViewController {
     @IBOutlet weak var bottomBarView: UIView!
     @IBOutlet weak var bottomBarTextView: UITextView!
     @IBOutlet weak var hideKeyboardImageView: UIImageView!
+    @IBOutlet weak var sendButton: UIButton!
     @IBOutlet weak var keyboardConstraint: NSLayoutConstraint!
     @IBOutlet weak var tableViewHeighConstraint: NSLayoutConstraint!
     
@@ -53,6 +54,13 @@ class ConversationViewController: UIViewController {
         reference = db.collection("channels").document(channel.identifier).collection("messages")
         setupTableView()
         addNotificationKeyboardObserver()
+        
+        let os = ProcessInfo().operatingSystemVersion
+        if os.majorVersion == 12 {
+            hideKeyboardImageView.image = UIImage(named: "Ios12Keyboard.chevron.compact.down")
+            hideKeyboardImageView.contentMode = .scaleAspectFit
+            sendButton.setImage(UIImage(named: "Ios12paperplane.fill"), for: .normal)
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -182,9 +190,9 @@ class ConversationViewController: UIViewController {
                     self.view.layoutIfNeeded()
                 })
             }
-            //            if !self.messages.isEmpty {
-            //                self.tableView.scrollToRow(at: NSIndexPath(row: 0, section: self.messages.count - 1) as IndexPath, at: .bottom, animated: true)
-            //            }
+                        if !self.messages.isEmpty {
+                            self.tableView.scrollToRow(at: NSIndexPath(row: 0, section: self.messages.count - 1) as IndexPath, at: .bottom, animated: true)
+                        }
             self.hideKeyboardImageView.isHidden = false
         }
     }

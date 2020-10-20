@@ -14,6 +14,7 @@
                 <outlet property="bottomBarView" destination="704-hM-UuA" id="K7F-iX-RkB"/>
                 <outlet property="hideKeyboardImageView" destination="k6p-dj-idc" id="R0U-pi-kf6"/>
                 <outlet property="keyboardConstraint" destination="k9C-VJ-48Y" id="qzJ-Le-uex"/>
+                <outlet property="sendButton" destination="em1-St-7El" id="kIJ-fn-CiU"/>
                 <outlet property="tableView" destination="zPV-8n-JAj" id="FIh-OC-x6Y"/>
                 <outlet property="tableViewHeighConstraint" destination="FWQ-OE-U4t" id="UDm-Ot-GQk"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
