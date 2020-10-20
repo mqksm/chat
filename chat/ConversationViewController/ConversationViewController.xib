@@ -15,6 +15,7 @@
                 <outlet property="hideKeyboardImageView" destination="k6p-dj-idc" id="R0U-pi-kf6"/>
                 <outlet property="keyboardConstraint" destination="k9C-VJ-48Y" id="qzJ-Le-uex"/>
                 <outlet property="tableView" destination="zPV-8n-JAj" id="FIh-OC-x6Y"/>
+                <outlet property="tableViewHeighConstraint" destination="FWQ-OE-U4t" id="UDm-Ot-GQk"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -26,6 +27,9 @@
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="zPV-8n-JAj">
                     <rect key="frame" x="0.0" y="44" width="414" height="768"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                    <constraints>
+                        <constraint firstAttribute="height" relation="lessThanOrEqual" constant="10000" id="FWQ-OE-U4t"/>
+                    </constraints>
                     <color key="separatorColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </tableView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="704-hM-UuA">

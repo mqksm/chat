@@ -18,6 +18,7 @@ class ConversationViewController: UIViewController {
     @IBOutlet weak var bottomBarTextView: UITextView!
     @IBOutlet weak var hideKeyboardImageView: UIImageView!
     @IBOutlet weak var keyboardConstraint: NSLayoutConstraint!
+    @IBOutlet weak var tableViewHeighConstraint: NSLayoutConstraint!
     
     private let channel: Channel
     private let incomingCellIdentifier = String(describing: IncomingMessageCell.self)
@@ -157,7 +158,6 @@ class ConversationViewController: UIViewController {
         let message = Message(content: text)
         sendMessage(message)
         bottomBarTextView.text = ""
-        view.endEditing(true)
     }
     
     // MARK: Work with keyboard
@@ -170,19 +170,29 @@ class ConversationViewController: UIViewController {
     @objc func keyboardWillShow(_ notification: Notification) {
         
         guard let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else {return}
-            if keyboardConstraint.constant == 0 {
-            tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: keyboardSize.height, right: 0)
-            keyboardConstraint.constant = -keyboardSize.height
-//                tableView.frame.size.height -= keyboardSize.height
-            view.layoutIfNeeded()
+        DispatchQueue.main.async {
+            if self.keyboardConstraint.constant == 0 {
+                self.tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: keyboardSize.height, right: 0)
+                
+//                UIView.animate(withDuration: 0.2, animations: {
+//                    self.keyboardConstraint.constant = -keyboardSize.height
+//                    self.tableView.contentInset.bottom = 0
+//                    self.view.layoutIfNeeded()
+//                    self.tableView.layoutIfNeeded()
+//                })
+                self.keyboardConstraint.constant = -keyboardSize.height
+                self.tableView.contentInset.bottom = 0
+                self.view.layoutIfNeeded()
+//                self.tableView.layoutIfNeeded()
                 
         }
-        if !messages.isEmpty {
-            DispatchQueue.main.async {
+            if !self.messages.isEmpty {
+            
                 self.tableView.scrollToRow(at: NSIndexPath(row: 0, section: self.messages.count - 1) as IndexPath, at: .none, animated: true)
             }
+        
+            self.hideKeyboardImageView.isHidden = false
         }
-        hideKeyboardImageView.isHidden = false
     }
     
     @objc func keyboardWillHide(_ notification: Notification) {
@@ -190,6 +200,7 @@ class ConversationViewController: UIViewController {
             tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         keyboardConstraint.constant = 0
         view.layoutIfNeeded()
+        tableView.layoutIfNeeded()
         hideKeyboardImageView.isHidden = true
     }
     
