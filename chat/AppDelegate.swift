@@ -18,6 +18,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         LogManager.printLog(log: "Application state changed from <Not running> to <Inactive>: \(#function)")
         Theme.current.apply()
         FirebaseApp.configure()
+        CoreDataStack.coreDataStack.didUpdateDataBase = { stack in
+            stack.printDatabaseStatistice()
+        }
+        CoreDataStack.coreDataStack.enableObservers()
         return true
     }
     

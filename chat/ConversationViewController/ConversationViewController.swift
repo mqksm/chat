@@ -77,6 +77,27 @@ class ConversationViewController: UIViewController {
             snapshot.documentChanges.forEach { change in
                 self.handleDocumentChange(change)
             }
+            // Сохранение в CoreData
+            CoreDataStack.coreDataStack.performSave { [weak self] context in
+                guard let channel = self?.channel,
+                    let messages = self?.messages else { return }
+                
+                for message in messages {
+                    let messageEntity = MessageCD(context: context)
+                    messageEntity.content = message.content
+                    messageEntity.created = message.created
+                    messageEntity.senderId = message.senderId
+                    messageEntity.senderName = message.senderName
+                    messageEntity.identifier = message.identifier
+                    
+                    let channelEntity = ChannelCD(context: context)
+                    channelEntity.identifier = channel.identifier
+                    channelEntity.name = channel.name
+                    channelEntity.lastMessage = channel.lastMessage
+                    channelEntity.lastActivity = channel.lastActivity
+                    channelEntity.addToMessages(messageEntity)
+                }
+            }
         }
     }
     
@@ -190,9 +211,9 @@ class ConversationViewController: UIViewController {
                     self.view.layoutIfNeeded()
                 })
             }
-                        if !self.messages.isEmpty {
-                            self.tableView.scrollToRow(at: NSIndexPath(row: 0, section: self.messages.count - 1) as IndexPath, at: .bottom, animated: true)
-                        }
+            if !self.messages.isEmpty {
+                self.tableView.scrollToRow(at: NSIndexPath(row: 0, section: self.messages.count - 1) as IndexPath, at: .bottom, animated: true)
+            }
             self.hideKeyboardImageView.isHidden = false
         }
     }

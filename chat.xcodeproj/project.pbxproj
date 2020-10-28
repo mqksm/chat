@@ -19,6 +19,8 @@
 		EF8708DD252CAB6900EFCE78 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF8708DC252CAB6900EFCE78 /* Theme.swift */; };
 		EF8FA9AE252C907A008FBFAE /* ThemesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF8FA9AC252C907A008FBFAE /* ThemesViewController.swift */; };
 		EF8FA9AF252C907A008FBFAE /* ThemesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EF8FA9AD252C907A008FBFAE /* ThemesViewController.xib */; };
+		EF910F9D2547FF8100092A52 /* Chat.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EF910F9B2547FF8100092A52 /* Chat.xcdatamodeld */; };
+		EF910F9F2548190F00092A52 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF910F9E2548190F00092A52 /* CoreDataStack.swift */; };
 		EF9284802523A17D0018439D /* ConfigurableViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF92847F2523A17D0018439D /* ConfigurableViewProtocol.swift */; };
 		EF9284872523ABC80018439D /* IncomingMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF9284852523ABC80018439D /* IncomingMessageCell.swift */; };
 		EF9284882523ABC80018439D /* IncomingMessageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EF9284862523ABC80018439D /* IncomingMessageCell.xib */; };
@@ -50,6 +52,8 @@
 		EF8708DC252CAB6900EFCE78 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		EF8FA9AC252C907A008FBFAE /* ThemesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemesViewController.swift; sourceTree = "<group>"; };
 		EF8FA9AD252C907A008FBFAE /* ThemesViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ThemesViewController.xib; sourceTree = "<group>"; };
+		EF910F9C2547FF8100092A52 /* Chat.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Chat.xcdatamodel; sourceTree = "<group>"; };
+		EF910F9E2548190F00092A52 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		EF92847F2523A17D0018439D /* ConfigurableViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurableViewProtocol.swift; sourceTree = "<group>"; };
 		EF9284852523ABC80018439D /* IncomingMessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomingMessageCell.swift; sourceTree = "<group>"; };
 		EF9284862523ABC80018439D /* IncomingMessageCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IncomingMessageCell.xib; sourceTree = "<group>"; };
@@ -144,6 +148,15 @@
 			path = ThemesViewController;
 			sourceTree = "<group>";
 		};
+		EFD6760F25495D50000F86BC /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				EF910F9B2547FF8100092A52 /* Chat.xcdatamodeld */,
+				EF910F9E2548190F00092A52 /* CoreDataStack.swift */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
 		EFF79D69250F7C1E00815ED3 = {
 			isa = PBXGroup;
 			children = (
@@ -166,6 +179,7 @@
 			isa = PBXGroup;
 			children = (
 				EFF79D75250F7C1E00815ED3 /* AppDelegate.swift */,
+				EFD6760F25495D50000F86BC /* CoreData */,
 				EF5C2604250FAE5D00B4B1F4 /* LogManager.swift */,
 				EFF79D7B250F7C1E00815ED3 /* Main.storyboard */,
 				EFB97927252D90AC0075F11F /* ThemesViewController */,
@@ -322,6 +336,7 @@
 				EFD7BB2D252D9B2000D6120E /* ConversationViewController.swift in Sources */,
 				EF5C2605250FAE5D00B4B1F4 /* LogManager.swift in Sources */,
 				EF9284872523ABC80018439D /* IncomingMessageCell.swift in Sources */,
+				EF910F9F2548190F00092A52 /* CoreDataStack.swift in Sources */,
 				EF7262C325344928007D94E8 /* GCDDataManager.swift in Sources */,
 				EF8708DD252CAB6900EFCE78 /* Theme.swift in Sources */,
 				EF9284802523A17D0018439D /* ConfigurableViewProtocol.swift in Sources */,
@@ -334,6 +349,7 @@
 				EFD6F7B3253AE457004EBB94 /* ChannelModel.swift in Sources */,
 				EF7262C62534493B007D94E8 /* OperationDataManager.swift in Sources */,
 				EF8FA9AE252C907A008FBFAE /* ThemesViewController.swift in Sources */,
+				EF910F9D2547FF8100092A52 /* Chat.xcdatamodeld in Sources */,
 				EFF79D76250F7C1E00815ED3 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -542,6 +558,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		EF910F9B2547FF8100092A52 /* Chat.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				EF910F9C2547FF8100092A52 /* Chat.xcdatamodel */,
+			);
+			currentVersion = EF910F9C2547FF8100092A52 /* Chat.xcdatamodel */;
+			path = Chat.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = EFF79D6A250F7C1E00815ED3 /* Project object */;
 }
