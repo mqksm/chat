@@ -11,7 +11,7 @@ import UIKit
 
 class OperationDataManager: Operation, DataManager {
     
-    class func saveTextDataToFiles(profileVC: ProfileViewController, name: String, description: String, isProfileNameChanged: Bool, isProfileDescriptionChanged: Bool) {
+    class func saveTextDataToFiles(profileVC: ProfileViewController, name: String, description: String, isNameChanged: Bool, isDescriptionChanged: Bool) {
         let queue = OperationQueue()
         queue.addOperation({
             DispatchQueue.main.async {
@@ -23,18 +23,17 @@ class OperationDataManager: Operation, DataManager {
                 let nameFileURL = dir.appendingPathComponent(nameFile)
                 let descriptionFileURL = dir.appendingPathComponent(descriptionFile)
                 do {
-                    if isProfileNameChanged {
+                    if isNameChanged {
                         try name.write(to: nameFileURL, atomically: false, encoding: .utf8)
                     }
-                    if isProfileDescriptionChanged {
+                    if isDescriptionChanged {
                         try description.write(to: descriptionFileURL, atomically: false, encoding: .utf8)
                     }
                     DispatchQueue.main.async {
                         profileVC.showDataSaveAlertController()
                         profileVC.activityIndicator.stopAnimating()
                     }
-                }
-                catch {
+                } catch {
                     DispatchQueue.main.async {
                         profileVC.showOperationDataSaveErrorAlertController()
                     }
@@ -51,8 +50,7 @@ class OperationDataManager: Operation, DataManager {
                 let pictureFileURL = pictureDir.appendingPathComponent(pictureFile)
                 do {
                     try picture.pngData()?.write(to: pictureFileURL, options: .atomic)
-                }
-                catch {
+                } catch {
                     print(error.localizedDescription)
                 }
             }
@@ -67,7 +65,7 @@ class OperationDataManager: Operation, DataManager {
         let descriptionFileURL = dir.appendingPathComponent(descriptionFile)
         
         if let name = try? String(contentsOf: nameFileURL, encoding: .utf8),
-           let description = try? String(contentsOf: descriptionFileURL, encoding: .utf8) {
+            let description = try? String(contentsOf: descriptionFileURL, encoding: .utf8) {
             return (name, description)
         }
         return (nil, nil)
@@ -79,12 +77,10 @@ class OperationDataManager: Operation, DataManager {
         let pictureFileURL = dir.appendingPathComponent(pictureFile)
         
         if let pictureData = try? Data(contentsOf: pictureFileURL),
-           let picture = UIImage(data: pictureData) {
+            let picture = UIImage(data: pictureData) {
             return picture
         }
         return nil
     }
     
-    
 }
-

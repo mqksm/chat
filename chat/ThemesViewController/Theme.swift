@@ -23,11 +23,11 @@ enum Theme: Int {
     var mainColor: UIColor {
         switch self {
         case .classic:
-            return UIColor(red: 19.0/255.0, green: 118.0/255.0, blue: 255.0/255.0, alpha: 1.0)
+            return UIColor(red: 19.0 / 255.0, green: 118.0 / 255.0, blue: 255.0 / 255.0, alpha: 1.0)
         case .night:
-            return UIColor(red: 255.0/255.0, green: 115.0/255.0, blue: 50.0/255.0, alpha: 1.0)
+            return UIColor(red: 255.0 / 255.0, green: 115.0 / 255.0, blue: 50.0 / 255.0, alpha: 1.0)
         case .day:
-            return UIColor(red: 0.0/255.0, green: 0.0/255.0, blue: 0.0/255.0, alpha: 1.0)
+            return UIColor(red: 0.0 / 255.0, green: 0.0 / 255.0, blue: 0.0 / 255.0, alpha: 1.0)
         }
     }
     
@@ -127,12 +127,11 @@ enum Theme: Int {
         }
     }
     
-    
     func apply() {
         // saving theme value to UserDefaults with GCD
         let queue = DispatchQueue.global(qos: .utility)
         queue.async {
-            UserDefaults.standard.set(rawValue, forKey: Keys.selectedTheme)
+            UserDefaults.standard.set(self.rawValue, forKey: Keys.selectedTheme)
         }
         UserDefaults.standard.synchronize()
         
@@ -167,11 +166,6 @@ enum Theme: Int {
         //            }
         //        }
         
-        
-        
     }
     
 }
-
-
-

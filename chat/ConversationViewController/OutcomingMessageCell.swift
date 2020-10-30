@@ -8,23 +8,15 @@
 
 import UIKit
 
-class OutcomingMessageTableViewCell: UITableViewCell, ConfigurableView {
+class OutcomingMessageCell: UITableViewCell, ConfigurableView {
     
-    
-    struct ConversationCellModel {
-        let text: String
-    }
-    
+    @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var outcomingTextLabel: UILabel!
     @IBOutlet weak var outcomingBubbleView: UIView!
-    
     
     override func prepareForReuse() {
         super.prepareForReuse()
         backgroundColor = .clear
-        //        outcomingBubbleView.layer.cornerRadius = 0.0
-        //        outcomingTextLabel?.text = nil
-        //        outcomingBubbleView.layer.masksToBounds = true
     }
     
     override func layoutSubviews() {
@@ -34,13 +26,19 @@ class OutcomingMessageTableViewCell: UITableViewCell, ConfigurableView {
         outcomingTextLabel.textColor = Theme.current.outcomingMessageCellTextColor
     }
     
-    func configure(with model: ConversationCellModel) {
+    func configure(with model: Message) {
         
-        outcomingTextLabel.text = model.text
-        //        outcomingBubbleView.layer.cornerRadius = outcomingBubbleView.bounds.width / 6
-        //        outcomingBubbleView.layer.masksToBounds = true
         selectionStyle = .none
+        outcomingTextLabel.text = model.content
         
+        let dateFormatter = DateFormatter()
+        let date = model.created
+        if Calendar.current.isDateInToday(date) {
+            dateFormatter.setLocalizedDateFormatFromTemplate("HH:mm")
+        } else {
+            dateFormatter.setLocalizedDateFormatFromTemplate("dd MMM")
+        }
+        dateLabel.text = dateFormatter.string(from: date)
     }
     
 }
