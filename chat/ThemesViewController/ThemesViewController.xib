@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ThemesViewController" customModule="Chat" customModuleProvider="target">
+            <connections>
+                <outlet property="classicImageView" destination="Ia3-Uy-heO" id="P2p-Jn-ED6"/>
+                <outlet property="classicView" destination="RKe-nx-yKY" id="RQc-HV-kd2"/>
+                <outlet property="dayImageView" destination="cGm-2i-F2d" id="UG7-HE-fDT"/>
+                <outlet property="dayView" destination="lR1-84-ycc" id="ETq-Tl-hNT"/>
+                <outlet property="nightImageView" destination="rpV-o1-uv4" id="iPl-Rs-lgy"/>
+                <outlet property="nightView" destination="vKE-3s-IeK" id="dzD-wz-b67"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RKe-nx-yKY">
+                    <rect key="frame" x="42" y="258.5" width="330" height="101.5"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QTU-AU-mFY">
+                            <rect key="frame" x="0.0" y="0.0" width="330" height="101.5"/>
+                            <state key="normal" title="Classic"/>
+                            <connections>
+                                <action selector="classicThemeButtonTapped:" destination="-1" eventType="touchUpInside" id="uAH-1r-chA"/>
+                            </connections>
+                        </button>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Classic" translatesAutoresizingMaskIntoConstraints="NO" id="Ia3-Uy-heO">
+                            <rect key="frame" x="0.0" y="0.0" width="330" height="72"/>
+                        </imageView>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="Ia3-Uy-heO" firstAttribute="top" secondItem="RKe-nx-yKY" secondAttribute="top" id="0bd-Do-pdR"/>
+                        <constraint firstAttribute="bottom" secondItem="QTU-AU-mFY" secondAttribute="bottom" id="Fku-xo-0Jf"/>
+                        <constraint firstAttribute="bottom" secondItem="Ia3-Uy-heO" secondAttribute="bottom" constant="29.5" id="NWE-qA-Rpe"/>
+                        <constraint firstAttribute="trailing" secondItem="Ia3-Uy-heO" secondAttribute="trailing" id="U8B-3R-djU"/>
+                        <constraint firstItem="QTU-AU-mFY" firstAttribute="leading" secondItem="RKe-nx-yKY" secondAttribute="leading" id="UsS-mL-TI9"/>
+                        <constraint firstItem="QTU-AU-mFY" firstAttribute="height" secondItem="Ia3-Uy-heO" secondAttribute="height" multiplier="1.40909" id="aZC-0k-Qq9"/>
+                        <constraint firstItem="QTU-AU-mFY" firstAttribute="top" secondItem="RKe-nx-yKY" secondAttribute="top" id="cSY-Gw-X7P"/>
+                        <constraint firstAttribute="trailing" secondItem="QTU-AU-mFY" secondAttribute="trailing" id="uw5-cw-CyS"/>
+                        <constraint firstItem="Ia3-Uy-heO" firstAttribute="leading" secondItem="RKe-nx-yKY" secondAttribute="leading" id="xIc-zb-z7c"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vKE-3s-IeK">
+                    <rect key="frame" x="42" y="546" width="330" height="101.5"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yIz-sd-Knm">
+                            <rect key="frame" x="0.0" y="0.0" width="330" height="101.5"/>
+                            <state key="normal" title="Night"/>
+                            <connections>
+                                <action selector="nightThemeButtonTapped:" destination="-1" eventType="touchUpInside" id="ApG-bo-22f"/>
+                            </connections>
+                        </button>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Night" translatesAutoresizingMaskIntoConstraints="NO" id="rpV-o1-uv4">
+                            <rect key="frame" x="0.0" y="0.0" width="330" height="72"/>
+                        </imageView>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="yIz-sd-Knm" firstAttribute="leading" secondItem="vKE-3s-IeK" secondAttribute="leading" id="BxH-e5-tAf"/>
+                        <constraint firstItem="yIz-sd-Knm" firstAttribute="height" secondItem="rpV-o1-uv4" secondAttribute="height" multiplier="1.40909" id="CBa-st-Scn"/>
+                        <constraint firstItem="yIz-sd-Knm" firstAttribute="top" secondItem="vKE-3s-IeK" secondAttribute="top" id="Gqa-7c-4uM"/>
+                        <constraint firstAttribute="bottom" secondItem="rpV-o1-uv4" secondAttribute="bottom" constant="29.5" id="bpK-90-boA"/>
+                        <constraint firstAttribute="trailing" secondItem="yIz-sd-Knm" secondAttribute="trailing" id="h4Q-56-8yb"/>
+                        <constraint firstItem="rpV-o1-uv4" firstAttribute="top" secondItem="vKE-3s-IeK" secondAttribute="top" id="pz1-bM-DgP"/>
+                        <constraint firstItem="rpV-o1-uv4" firstAttribute="leading" secondItem="vKE-3s-IeK" secondAttribute="leading" id="qka-K9-x9Z"/>
+                        <constraint firstAttribute="trailing" secondItem="rpV-o1-uv4" secondAttribute="trailing" id="tuS-jL-xb6"/>
+                        <constraint firstAttribute="bottom" secondItem="yIz-sd-Knm" secondAttribute="bottom" id="z58-Cm-Lpf"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lR1-84-ycc">
+                    <rect key="frame" x="42" y="402" width="330" height="102"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WAQ-cd-AFQ">
+                            <rect key="frame" x="0.0" y="0.0" width="330" height="102"/>
+                            <state key="normal" title="Day"/>
+                            <connections>
+                                <action selector="dayThemeButtonTapped:" destination="-1" eventType="touchUpInside" id="Kl1-W5-xkd"/>
+                            </connections>
+                        </button>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Day" translatesAutoresizingMaskIntoConstraints="NO" id="cGm-2i-F2d">
+                            <rect key="frame" x="0.0" y="0.0" width="330" height="72.5"/>
+                        </imageView>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="cGm-2i-F2d" secondAttribute="trailing" id="Dv6-bc-Nt1"/>
+                        <constraint firstItem="WAQ-cd-AFQ" firstAttribute="top" secondItem="lR1-84-ycc" secondAttribute="top" id="Ee0-oK-dbZ"/>
+                        <constraint firstItem="cGm-2i-F2d" firstAttribute="top" secondItem="lR1-84-ycc" secondAttribute="top" id="FA1-FM-DvY"/>
+                        <constraint firstItem="WAQ-cd-AFQ" firstAttribute="height" secondItem="cGm-2i-F2d" secondAttribute="height" multiplier="1.40909" id="NyH-c9-rYh"/>
+                        <constraint firstAttribute="bottom" secondItem="WAQ-cd-AFQ" secondAttribute="bottom" id="WaA-n5-wRb"/>
+                        <constraint firstItem="WAQ-cd-AFQ" firstAttribute="leading" secondItem="lR1-84-ycc" secondAttribute="leading" id="ZIh-fT-aGX"/>
+                        <constraint firstAttribute="bottom" secondItem="cGm-2i-F2d" secondAttribute="bottom" constant="29.5" id="g6v-t6-xjx"/>
+                        <constraint firstItem="cGm-2i-F2d" firstAttribute="leading" secondItem="lR1-84-ycc" secondAttribute="leading" id="opW-MZ-ZPP"/>
+                        <constraint firstAttribute="trailing" secondItem="WAQ-cd-AFQ" secondAttribute="trailing" id="vLr-Qi-GTp"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="vKE-3s-IeK" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="2hE-9g-o3Q"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="vKE-3s-IeK" secondAttribute="trailing" constant="42" id="GoE-td-HkT"/>
+                <constraint firstItem="vKE-3s-IeK" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="42" id="NXq-0A-7fO"/>
+                <constraint firstItem="lR1-84-ycc" firstAttribute="top" secondItem="RKe-nx-yKY" secondAttribute="bottom" constant="42" id="Ngo-i2-KpR"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="RKe-nx-yKY" secondAttribute="trailing" constant="42" id="VkO-gH-nAP"/>
+                <constraint firstItem="RKe-nx-yKY" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="cZF-cx-nuw"/>
+                <constraint firstItem="RKe-nx-yKY" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="42" id="idC-6g-heZ"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="lR1-84-ycc" secondAttribute="trailing" constant="42" id="jKw-rJ-oOI"/>
+                <constraint firstItem="lR1-84-ycc" firstAttribute="centerY" secondItem="fnl-2z-Ty3" secondAttribute="centerY" id="lag-Us-7fd"/>
+                <constraint firstItem="lR1-84-ycc" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="ldu-yE-gDC"/>
+                <constraint firstItem="vKE-3s-IeK" firstAttribute="top" secondItem="lR1-84-ycc" secondAttribute="bottom" constant="42" id="m1S-Ja-LEC"/>
+                <constraint firstItem="lR1-84-ycc" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="42" id="uFw-k6-GdC"/>
+            </constraints>
+            <point key="canvasLocation" x="-4.3478260869565224" y="72.991071428571431"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="Classic" width="302" height="59"/>
+        <image name="Day" width="302" height="59"/>
+        <image name="Night" width="302" height="59"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

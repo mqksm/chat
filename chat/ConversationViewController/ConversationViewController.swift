@@ -10,16 +10,28 @@ import UIKit
 
 class ConversationViewController: UIViewController {
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        view.addSubview(tableView)
-    }
+    // MARK: - Properties
+    
+    @IBOutlet weak var tableView: UITableView!
     
     private let incomingCellIdentifier = String(describing: IncomingMessageTableViewCell.self)
     private let outcomingCellIdentifier = String(describing: OutcomingMessageTableViewCell.self)
     
-    private lazy var tableView: UITableView = {
-        let tableView = UITableView(frame: view.frame, style: .plain)
+    // MARK: - UIViewController lifecycle methods
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setupTableView()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        navigationController?.popViewController(animated: true)
+    }
+    
+    // MARK: - Methods
+    
+    func setupTableView() {
         tableView.register(UINib(nibName: String(describing: IncomingMessageTableViewCell.self), bundle: nil), forCellReuseIdentifier: incomingCellIdentifier)
         tableView.register(UINib(nibName: String(describing: OutcomingMessageTableViewCell.self), bundle: nil), forCellReuseIdentifier: outcomingCellIdentifier)
         tableView.dataSource = self
@@ -29,10 +41,15 @@ class ConversationViewController: UIViewController {
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.separatorStyle = .none
         tableView.tableFooterView = UIView()
-        return tableView
-    }()
+        tableView.sectionHeaderHeight = 0.0;
+        tableView.sectionFooterHeight = 0.0;
+        tableView.backgroundColor = Theme.current.backgroundColor
+        view.backgroundColor = Theme.current.backgroundColor
+    }
     
 }
+
+// MARK: -  UITableViewDataSource, UITableViewDelegate
 
 extension ConversationViewController: UITableViewDataSource, UITableViewDelegate {
     

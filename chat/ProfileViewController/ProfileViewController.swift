@@ -11,6 +11,8 @@ import Photos
 
 class ProfileViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     
+    // MARK: - Properties
+    
     var imagePicker = UIImagePickerController()
     
     @IBOutlet weak var nameLabel: UILabel!
@@ -20,6 +22,8 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
     @IBOutlet weak var profilePictureImageView: UIImageView!
     @IBOutlet weak var editButton: UIButton!
     
+    // MARK: - UIViewController lifecycle methods
+    
     required init?(coder:NSCoder) {
         super.init(coder:coder)
         //        print(editButton.frame) Cвойство frame равно nil. Вью и его объекты еще не загружены, соответсвенно, свойство frame еще не определено. На этом этапе еще нет ни самой view, ни аутлетов.
@@ -27,7 +31,7 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(editButton.frame) // Свойство frame успешно распечатано, но параметры frame относятся к значениям из сториборда. На данном этапе жизненного цикла контроллера, размеры view не актуальны, т.е. не такие, какими они будут после вывода на экран.
+        //        print(editButton.frame) // Свойство frame успешно распечатано, но параметры frame относятся к значениям из сториборда. На данном этапе жизненного цикла контроллера, размеры view не актуальны, т.е. не такие, какими они будут после вывода на экран.
         LogManager.printLog(log: "After loadView method, viewDidLoad method was executed: \(#function)")
     }
     
@@ -49,7 +53,7 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        print(editButton.frame) // На данном этапе распечатаны корректные значения свойства frame кнопки Edit, которые относятся к используемому устройству. В методе viewDidLoad значения свойств frame относятся к значениям устройства в сториборде. При вызове viewDidAppear, view уже находится в иерархии отображения и имеет актуальные размеры.
+        //        print(editButton.frame) // На данном этапе распечатаны корректные значения свойства frame кнопки Edit, которые относятся к используемому устройству. В методе viewDidLoad значения свойств frame относятся к значениям устройства в сториборде. При вызове viewDidAppear, view уже находится в иерархии отображения и имеет актуальные размеры.
         LogManager.printLog(log: "After viewDidLayoutSubviews method, viewDidAppear method was executed: \(#function)")
     }
     
@@ -63,7 +67,11 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
         LogManager.printLog(log: "After viewWillDisappear method, viewDidDisappear method was executed: \(#function)")
     }
     
+    // MARK: - Methods
+    
     private func configureItems() {
+        view.backgroundColor = Theme.current.backgroundColor
+        saveButton.backgroundColor = Theme.current.textBackgroundColor
         profilePictureImageView.layer.cornerRadius = profilePictureImageView.bounds.width / 2
         saveButton.layer.cornerRadius = saveButton.bounds.height / 2
     }

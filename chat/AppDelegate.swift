@@ -12,9 +12,10 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window : UIWindow?
-        
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         LogManager.printLog(log:"Application state changed from <Not running> to <Inactive>: \(#function)")
+        Theme.current.apply()
         return true
     }
     
