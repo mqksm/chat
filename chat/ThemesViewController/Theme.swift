@@ -129,12 +129,19 @@ enum Theme: Int {
     
     
     func apply() {
-        // saving theme value to UserDefaults
-        UserDefaults.standard.set(rawValue, forKey: Keys.selectedTheme)
+        // saving theme value to UserDefaults with GCD
+        let queue = DispatchQueue.global(qos: .utility)
+        queue.async {
+            UserDefaults.standard.set(rawValue, forKey: Keys.selectedTheme)
+        }
         UserDefaults.standard.synchronize()
         
         UIApplication.shared.delegate?.window??.tintColor = mainColor
         UILabel.appearance().textColor = textColor
+        UITextField.appearance().textColor = textColor
+        UITextView.appearance().textColor = textColor
+        UITextView.appearance().backgroundColor = backgroundColor
+        UIActivityIndicatorView.appearance().color = mainColor
         
         UINavigationBar.appearance().barStyle = barStyle
         UINavigationBar.appearance().isTranslucent = false
@@ -151,14 +158,14 @@ enum Theme: Int {
         
         //        Использование замыкания убирает необходимость в данном действии.
         //        Unload all views for each `UIWindow` and add back. Useful for applying `UIAppearance` changes to existing views.
-//        for _ in 0...1 { // Для iOS 12 достаточно одного вызова, для iOS 14 срабатывает при двух вызовах
-//            UIApplication.shared.windows.forEach { window in
-//                window.subviews.forEach { view in
-//                    view.removeFromSuperview()
-//                    window.addSubview(view)
-//                }
-//            }
-//        }
+        //        for _ in 0...1 { // Для iOS 12 достаточно одного вызова, для iOS 14 срабатывает при двух вызовах
+        //            UIApplication.shared.windows.forEach { window in
+        //                window.subviews.forEach { view in
+        //                    view.removeFromSuperview()
+        //                    window.addSubview(view)
+        //                }
+        //            }
+        //        }
         
         
         
