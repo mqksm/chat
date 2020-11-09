@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="16119" systemVersion="19H2" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="ChannelCD" representedClassName="ChannelCD" syncable="YES" codeGenerationType="class">
+        <attribute name="identifier" attributeType="String"/>
+        <attribute name="lastActivity" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="lastMessage" optional="YES" attributeType="String"/>
+        <attribute name="name" attributeType="String"/>
+        <relationship name="messages" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="MessageCD" inverseName="channel" inverseEntity="MessageCD"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="identifier"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
+    </entity>
+    <entity name="MessageCD" representedClassName="MessageCD" syncable="YES" codeGenerationType="class">
+        <attribute name="content" attributeType="String"/>
+        <attribute name="created" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="identifier" attributeType="String"/>
+        <attribute name="senderId" attributeType="String"/>
+        <attribute name="senderName" attributeType="String"/>
+        <relationship name="channel" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ChannelCD" inverseName="messages" inverseEntity="ChannelCD"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="identifier"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
+    </entity>
+    <elements>
+        <element name="ChannelCD" positionX="-77.63671875" positionY="-94.609375" width="125.3046875" height="118"/>
+        <element name="MessageCD" positionX="164.20703125" positionY="11.33984375" width="128" height="133"/>
+    </elements>
+</model>
