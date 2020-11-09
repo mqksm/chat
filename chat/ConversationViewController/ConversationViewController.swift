@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import CoreData
 
 class ConversationViewController: UIViewController {
     
@@ -21,7 +22,7 @@ class ConversationViewController: UIViewController {
     @IBOutlet weak var keyboardConstraint: NSLayoutConstraint!
     @IBOutlet weak var tableViewHeighConstraint: NSLayoutConstraint!
     
-    private let channel: Channel
+    private let channel: ChannelCD
     private let incomingCellIdentifier = String(describing: IncomingMessageCell.self)
     private let outcomingCellIdentifier = String(describing: OutcomingMessageCell.self)
     private lazy var db = Firestore.firestore()
@@ -29,10 +30,33 @@ class ConversationViewController: UIViewController {
     private let storage = Storage.storage().reference()
     private var messages: [Message] = []
     private var messageListener: ListenerRegistration?
-    var top: CGFloat = 0.0
+    private var top: CGFloat = 0.0
+    private var lastIndexPath: IndexPath? {
+        let section = numberOfSections(in: tableView) - 1
+        if section >= 0 {
+            let row = tableView(tableView, numberOfRowsInSection: section) - 1
+            if row >= 0 {
+                return IndexPath(row: row, section: section)
+            }
+        }
+        return nil
+    }
+    lazy var fetchedResultsController: NSFetchedResultsController<MessageCD> = {
+        let fetchRequest: NSFetchRequest<MessageCD> = MessageCD.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "channel == %@", channel)
+        let sortDescriptor = NSSortDescriptor(key: "created", ascending: true)
+        fetchRequest.sortDescriptors = [sortDescriptor]
+        let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest,
+                                                                  managedObjectContext: CoreDataStack.shared.mainContext,
+                                                                  sectionNameKeyPath: nil,
+                                                                  cacheName: nil)
+        try? fetchedResultsController.performFetch()
+        fetchedResultsController.delegate = self
+        return fetchedResultsController
+    }()
     // MARK: - initialization
     
-    init(channel: Channel) {
+    init(channel: ChannelCD) {
         self.channel = channel
         super.init(nibName: nil, bundle: nil)
         title = channel.name
@@ -51,7 +75,7 @@ class ConversationViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        reference = db.collection("channels").document(channel.identifier).collection("messages")
+        reference = db.collection("channels").document(channel.identifier ?? "").collection("messages")
         setupTableView()
         addNotificationKeyboardObserver()
         
@@ -78,24 +102,24 @@ class ConversationViewController: UIViewController {
                 self.handleDocumentChange(change)
             }
             // Сохранение в CoreData
-            CoreDataStack.coreDataStack.performSave { [weak self] context in
+            CoreDataStack.shared.performSave { [weak self] context in
                 guard let channel = self?.channel,
+                    let identifier = channel.identifier,
                     let messages = self?.messages else { return }
+                let fetchRequest: NSFetchRequest<ChannelCD> = ChannelCD.fetchRequest()
+                fetchRequest.predicate = NSPredicate(format: "identifier == %@", identifier)
+                guard let channelCR = try? context.fetch(fetchRequest).first else { return }
                 
                 for message in messages {
-                    let messageEntity = MessageCD(context: context)
-                    messageEntity.content = message.content
-                    messageEntity.created = message.created
-                    messageEntity.senderId = message.senderId
-                    messageEntity.senderName = message.senderName
-                    messageEntity.identifier = message.identifier
-                    
-                    let channelEntity = ChannelCD(context: context)
-                    channelEntity.identifier = channel.identifier
-                    channelEntity.name = channel.name
-                    channelEntity.lastMessage = channel.lastMessage
-                    channelEntity.lastActivity = channel.lastActivity
-                    channelEntity.addToMessages(messageEntity)
+                    if (channelCR.messages?.first(where: { ($0 as? MessageCD)?.identifier == message.identifier })) == nil {
+                        let messageEntity = MessageCD(context: context)
+                        messageEntity.content = message.content
+                        messageEntity.created = message.created
+                        messageEntity.senderId = message.senderId
+                        messageEntity.senderName = message.senderName
+                        messageEntity.identifier = message.identifier
+                        channelCR.addToMessages(messageEntity)
+                    }
                 }
             }
         }
@@ -110,7 +134,6 @@ class ConversationViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         top = view.frame.origin.y
-        //        top = bottomBarView.frame.origin.y
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -144,10 +167,8 @@ class ConversationViewController: UIViewController {
                 print("Error sending message: \(error.localizedDescription)")
                 return
             }
-            if !self.messages.isEmpty {
-                DispatchQueue.main.async {
-                    self.tableView.scrollToRow(at: NSIndexPath(row: 0, section: self.messages.count - 1) as IndexPath, at: .bottom, animated: true)
-                }
+            if let lastIndexPath = self.lastIndexPath {
+                self.tableView.scrollToRow(at: lastIndexPath, at: .top, animated: true)
             }
         }
     }
@@ -158,7 +179,7 @@ class ConversationViewController: UIViewController {
         }
         messages.append(message)
         messages.sort()
-        tableView.reloadData()
+        //        tableView.reloadData()
     }
     
     private func handleDocumentChange(_ change: DocumentChange) {
@@ -169,11 +190,11 @@ class ConversationViewController: UIViewController {
         switch change.type {
         case .added:
             insertNewMessage(message)
-            if !messages.isEmpty {
-                DispatchQueue.main.async {
-                    self.tableView.scrollToRow(at: NSIndexPath(row: 0, section: self.messages.count - 1) as IndexPath, at: .bottom, animated: false)
-                }
-            }
+                            DispatchQueue.main.async {
+                                if let lastIndexPath = self.lastIndexPath {
+                                    self.tableView.scrollToRow(at: lastIndexPath, at: .top, animated: false)
+                                }
+                        }
         default:
             break
         }
@@ -211,8 +232,8 @@ class ConversationViewController: UIViewController {
                     self.view.layoutIfNeeded()
                 })
             }
-            if !self.messages.isEmpty {
-                self.tableView.scrollToRow(at: NSIndexPath(row: 0, section: self.messages.count - 1) as IndexPath, at: .bottom, animated: true)
+            if let lastIndexPath = self.lastIndexPath {
+                self.tableView.scrollToRow(at: lastIndexPath, at: .top, animated: true)
             }
             self.hideKeyboardImageView.isHidden = false
         }
@@ -236,10 +257,10 @@ class ConversationViewController: UIViewController {
 
 // MARK: - UITableViewDataSource, UITableViewDelegate
 
-extension ConversationViewController: UITableViewDataSource, UITableViewDelegate {
+extension ConversationViewController: UITableViewDataSource, UITableViewDelegate, NSFetchedResultsControllerDelegate {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return messages.count
+        return 1
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -247,14 +268,13 @@ extension ConversationViewController: UITableViewDataSource, UITableViewDelegate
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        guard let sections = fetchedResultsController.sections else { return 0 }
+        return sections[section].numberOfObjects
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        let message = messages[indexPath.section]
-        
-        if message.senderId != message.myId {
+        let message = fetchedResultsController.object(at: indexPath)
+        if message.senderId != Message.myId {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: incomingCellIdentifier, for: indexPath) as? IncomingMessageCell else {return UITableViewCell()}
             cell.configure(with: message)
             return cell
@@ -269,4 +289,39 @@ extension ConversationViewController: UITableViewDataSource, UITableViewDelegate
         view.endEditing(true)
     }
     
+    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        tableView.beginUpdates()
+    }
+    
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>,
+                    didChange anObject: Any,
+                    at indexPath: IndexPath?,
+                    for type: NSFetchedResultsChangeType,
+                    newIndexPath: IndexPath?) {
+        switch type {
+        case .insert:
+            if let newIndexPath = newIndexPath {
+                tableView.insertRows(at: [newIndexPath], with: .automatic)
+            }
+        case .move:
+            if let newIndexPath = newIndexPath, let indexPath = indexPath {
+                tableView.deleteRows(at: [indexPath], with: .automatic)
+                tableView.insertRows(at: [newIndexPath], with: .automatic)
+            }
+        case .update:
+            if let indexPath = indexPath {
+                tableView.reloadRows(at: [indexPath], with: .automatic)
+            }
+        case .delete:
+            if let indexPath = indexPath {
+                tableView.deleteRows(at: [indexPath], with: .automatic)
+            }
+        @unknown default:
+            fatalError()
+        }
+    }
+    
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        tableView.endUpdates()
+    }
 }
