@@ -104,11 +104,12 @@ class ConversationsListViewController: UIViewController {
             self?.navigationController?.navigationBar.barStyle = Theme.current.barStyle
             self?.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: Theme.current.textColor]
             self?.navigationController?.navigationBar.isTranslucent = false
+            self?.tableView.reloadData()
         }
         navigationController?.pushViewController(themesVC, animated: true)
     }
     
-    func setupTableView() {
+    private func setupTableView() {
         tableView.register(UINib(nibName: String(describing: ConversationsListTableViewCell.self), bundle: nil), forCellReuseIdentifier: cellIdentifier)
         tableView.dataSource = self
         tableView.delegate = self
@@ -124,7 +125,9 @@ class ConversationsListViewController: UIViewController {
             textField.textColor = .black
         }
         let save = UIAlertAction(title: "Создать", style: .default) { [weak self] _ in
-            guard let textField = alertController.textFields?.first, textField.text != "" else { self?.showErrorAlertController(withText: "Название канала не должно быть пустым!")
+            guard let textField = alertController.textFields?.first, textField.text != "" else {
+                self?.presentAlertWithTitle(title: "Ошибка", message: "Название канала не должно быть пустым!", options: "ОК") { (_) in
+            }
                 return }
             if let channelText = textField.text {
                 self?.reference.addDocument(data: ["name": channelText])
@@ -159,11 +162,6 @@ class ConversationsListViewController: UIViewController {
         }
         channels.append(channel)
         channels.sort()
-        
-        //        guard let index = channels.firstIndex(of: channel) else {
-        //            return
-        //        }
-        //        tableView.insertRows(at: [IndexPath(row: index, section: 0)], with: .automatic)
     }
     
     private func updateChannelInTable(_ channel: Channel) {
@@ -171,7 +169,6 @@ class ConversationsListViewController: UIViewController {
             return
         }
         channels[index] = channel
-        //        tableView.reloadRows(at: [IndexPath(row: index, section: 0)], with: .automatic)
     }
     
     private func removeChannelFromTable(_ channel: Channel) {
@@ -185,14 +182,7 @@ class ConversationsListViewController: UIViewController {
         CoreDataStack.shared.mainContext.delete(channelCR)
         try? CoreDataStack.shared.performSave(in: CoreDataStack.shared.mainContext)
     }
-    
-    // MARK: Alert
-    
-    func showErrorAlertController(withText message: String) {
-        let errorAlertController = UIAlertController(title: "Ошибка", message: message, preferredStyle: .alert)
-        errorAlertController.addAction(UIAlertAction(title: "OK", style: .cancel))
-        present(errorAlertController, animated: true, completion: nil)
-    }
+
 }
 
 // MARK: - UITableViewDataSource, UITableViewDelegate
@@ -205,20 +195,17 @@ extension ConversationsListViewController: UITableViewDataSource, UITableViewDel
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         guard let sections = fetchedResultsController.sections else { return 0 }
         return sections[section].numberOfObjects
-        //        return channels.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? ConversationsListTableViewCell else { return UITableViewCell() }
         let channel = fetchedResultsController.object(at: indexPath)
-        //        let channel = channels[indexPath.row]
         cell.configure(with: channel)
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let channel = fetchedResultsController.object(at: indexPath)
-        //        let channel = channels[indexPath.row]
         let conversationVC = ConversationViewController(channel: channel)
         navigationController?.pushViewController(conversationVC, animated: true)
     }
@@ -226,10 +213,9 @@ extension ConversationsListViewController: UITableViewDataSource, UITableViewDel
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { _, _, _ in
             let channel = self.fetchedResultsController.object(at: indexPath)
-            //            let channel = self.channels[indexPath.row]
             self.reference.document(channel.identifier ?? "").delete()
             CoreDataStack.shared.mainContext.delete(channel)
-            try? CoreDataStack.shared.performSave(in: CoreDataStack.shared.mainContext) // saveContext???
+            try? CoreDataStack.shared.performSave(in: CoreDataStack.shared.mainContext)
         }
         return UISwipeActionsConfiguration(actions: [deleteAction])
     }
@@ -272,7 +258,6 @@ extension ConversationsListViewController: UITableViewDataSource, UITableViewDel
 }
 
 // MARK: - Delegate
-// делегат:
 //extension ConversationsListViewController: ThemePickerDelegate {
 //    func ThemeApplied() {
 //        self.tableView.backgroundColor = Theme.current.backgroundColor
@@ -280,6 +265,7 @@ extension ConversationsListViewController: UITableViewDataSource, UITableViewDel
 //        self.navigationController?.navigationBar.barStyle = Theme.current.barStyle
 //        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: Theme.current.textColor]
 //        self.navigationController?.navigationBar.isTranslucent = false
+//        self.tableView.reloadData()
 //    }
 //
 //}

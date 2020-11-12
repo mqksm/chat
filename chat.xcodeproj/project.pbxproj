@@ -12,7 +12,6 @@
 		EF092B102520AAD0002BABA3 /* ConversationsListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF092B0E2520AAD0002BABA3 /* ConversationsListTableViewCell.swift */; };
 		EF092B112520AAD0002BABA3 /* ConversationsListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EF092B0F2520AAD0002BABA3 /* ConversationsListTableViewCell.xib */; };
 		EF17EE102538B8EC005E7AD9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = EF17EE0F2538B8EC005E7AD9 /* GoogleService-Info.plist */; };
-		EF5C2605250FAE5D00B4B1F4 /* LogManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF5C2604250FAE5D00B4B1F4 /* LogManager.swift */; };
 		EF7262C325344928007D94E8 /* GCDDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF7262C225344928007D94E8 /* GCDDataManager.swift */; };
 		EF7262C62534493B007D94E8 /* OperationDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF7262C52534493B007D94E8 /* OperationDataManager.swift */; };
 		EF7262C925344999007D94E8 /* DataManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF7262C825344999007D94E8 /* DataManagerProtocol.swift */; };
@@ -26,6 +25,7 @@
 		EF9284882523ABC80018439D /* IncomingMessageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EF9284862523ABC80018439D /* IncomingMessageCell.xib */; };
 		EF92848C2523B8A70018439D /* OutcomingMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF92848A2523B8A70018439D /* OutcomingMessageCell.swift */; };
 		EF92848D2523B8A70018439D /* OutcomingMessageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EF92848B2523B8A70018439D /* OutcomingMessageCell.xib */; };
+		EFD3D0D7255AD87A006AECC9 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD3D0D6255AD87A006AECC9 /* UIViewController.swift */; };
 		EFD6F7B3253AE457004EBB94 /* ChannelModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD6F7B2253AE457004EBB94 /* ChannelModel.swift */; };
 		EFD6F7B5253AE484004EBB94 /* MessageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD6F7B4253AE484004EBB94 /* MessageModel.swift */; };
 		EFD7BB2D252D9B2000D6120E /* ConversationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD7BB2B252D9B2000D6120E /* ConversationViewController.swift */; };
@@ -45,7 +45,6 @@
 		EF092B0E2520AAD0002BABA3 /* ConversationsListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationsListTableViewCell.swift; sourceTree = "<group>"; };
 		EF092B0F2520AAD0002BABA3 /* ConversationsListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ConversationsListTableViewCell.xib; sourceTree = "<group>"; };
 		EF17EE0F2538B8EC005E7AD9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		EF5C2604250FAE5D00B4B1F4 /* LogManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogManager.swift; sourceTree = "<group>"; };
 		EF7262C225344928007D94E8 /* GCDDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GCDDataManager.swift; sourceTree = "<group>"; };
 		EF7262C52534493B007D94E8 /* OperationDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperationDataManager.swift; sourceTree = "<group>"; };
 		EF7262C825344999007D94E8 /* DataManagerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManagerProtocol.swift; sourceTree = "<group>"; };
@@ -59,6 +58,7 @@
 		EF9284862523ABC80018439D /* IncomingMessageCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IncomingMessageCell.xib; sourceTree = "<group>"; };
 		EF92848A2523B8A70018439D /* OutcomingMessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutcomingMessageCell.swift; sourceTree = "<group>"; };
 		EF92848B2523B8A70018439D /* OutcomingMessageCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OutcomingMessageCell.xib; sourceTree = "<group>"; };
+		EFD3D0D6255AD87A006AECC9 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		EFD6F7B2253AE457004EBB94 /* ChannelModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelModel.swift; sourceTree = "<group>"; };
 		EFD6F7B4253AE484004EBB94 /* MessageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageModel.swift; sourceTree = "<group>"; };
 		EFD7BB2B252D9B2000D6120E /* ConversationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationViewController.swift; sourceTree = "<group>"; };
@@ -138,6 +138,17 @@
 			path = ConversationsListViewController;
 			sourceTree = "<group>";
 		};
+		EF865A94255962E400FEF2DE /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				EFF79D7E250F7C2200815ED3 /* Assets.xcassets */,
+				EFF79D80250F7C2200815ED3 /* LaunchScreen.storyboard */,
+				EF17EE0F2538B8EC005E7AD9 /* GoogleService-Info.plist */,
+				EFF79D83250F7C2200815ED3 /* Info.plist */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		EFB97927252D90AC0075F11F /* ThemesViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -146,6 +157,14 @@
 				EF8708DC252CAB6900EFCE78 /* Theme.swift */,
 			);
 			path = ThemesViewController;
+			sourceTree = "<group>";
+		};
+		EFD3D0D5255AD85B006AECC9 /* Extention */ = {
+			isa = PBXGroup;
+			children = (
+				EFD3D0D6255AD87A006AECC9 /* UIViewController.swift */,
+			);
+			path = Extention;
 			sourceTree = "<group>";
 		};
 		EFD6760F25495D50000F86BC /* CoreData */ = {
@@ -178,18 +197,15 @@
 		EFF79D74250F7C1E00815ED3 /* chat */ = {
 			isa = PBXGroup;
 			children = (
+				EFD3D0D5255AD85B006AECC9 /* Extention */,
 				EFF79D75250F7C1E00815ED3 /* AppDelegate.swift */,
 				EFD6760F25495D50000F86BC /* CoreData */,
-				EF5C2604250FAE5D00B4B1F4 /* LogManager.swift */,
 				EFF79D7B250F7C1E00815ED3 /* Main.storyboard */,
 				EFB97927252D90AC0075F11F /* ThemesViewController */,
 				EF1415FD252C79D2004EF80D /* ProfileViewController */,
 				EF1415FF252C7A89004EF80D /* ConversationViewController */,
 				EF141601252C7AAA004EF80D /* ConversationsListViewController */,
-				EFF79D7E250F7C2200815ED3 /* Assets.xcassets */,
-				EFF79D80250F7C2200815ED3 /* LaunchScreen.storyboard */,
-				EF17EE0F2538B8EC005E7AD9 /* GoogleService-Info.plist */,
-				EFF79D83250F7C2200815ED3 /* Info.plist */,
+				EF865A94255962E400FEF2DE /* Supporting Files */,
 			);
 			path = chat;
 			sourceTree = "<group>";
@@ -334,8 +350,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				EFD7BB2D252D9B2000D6120E /* ConversationViewController.swift in Sources */,
-				EF5C2605250FAE5D00B4B1F4 /* LogManager.swift in Sources */,
 				EF9284872523ABC80018439D /* IncomingMessageCell.swift in Sources */,
+				EFD3D0D7255AD87A006AECC9 /* UIViewController.swift in Sources */,
 				EF910F9F2548190F00092A52 /* CoreDataStack.swift in Sources */,
 				EF7262C325344928007D94E8 /* GCDDataManager.swift in Sources */,
 				EF8708DD252CAB6900EFCE78 /* Theme.swift in Sources */,
@@ -500,7 +516,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = "";
-				INFOPLIST_FILE = chat/Info.plist;
+				INFOPLIST_FILE = "chat/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -522,7 +538,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = "";
-				INFOPLIST_FILE = chat/Info.plist;
+				INFOPLIST_FILE = "chat/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

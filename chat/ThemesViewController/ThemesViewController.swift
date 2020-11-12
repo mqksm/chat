@@ -15,24 +15,17 @@ class ThemesViewController: UIViewController {
     @IBOutlet weak var classicView: UIView!
     @IBOutlet weak var nightView: UIView!
     @IBOutlet weak var dayView: UIView!
-    
     @IBOutlet weak var classicImageView: UIImageView!
     @IBOutlet weak var nightImageView: UIImageView!
     @IBOutlet weak var dayImageView: UIImageView!
     
     // MARK: Delegate
-    //    делегат:
-//        weak var delegate: ThemePickerDelegate? // В случае, если ссылка будет сильная, может возникнуть retain cycle
+    //        weak var delegate: ThemePickerDelegate?
     
     // MARK: Closure
-    //    замыкание:
-        var themeApplied: (() -> Void)?
+    var themeApplied: (() -> Void)?
     
     // MARK: - UIViewController lifecycle methods
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
@@ -50,36 +43,30 @@ class ThemesViewController: UIViewController {
         Theme.classic.apply()
         setupView()
         // MARK: Delegate
-        //    делегат:
-//            delegate?.ThemeApplied()
+        //            delegate?.ThemeApplied()
         // MARK: Closure
-        //    замыкание:
-            themeApplied?()
+        themeApplied?()
     }
     
     @IBAction func dayThemeButtonTapped(_ sender: UIButton) {
         Theme.day.apply()
         setupView()
         // MARK: Delegate
-        //    делегат:
-//            delegate?.ThemeApplied()
+        //            delegate?.ThemeApplied()
         // MARK: Closure
-        //    замыкание:
-            themeApplied?()
+        themeApplied?()
     }
     
     @IBAction func nightThemeButtonTapped(_ sender: UIButton) {
         Theme.night.apply()
         setupView()
         // MARK: Delegate
-        //    делегат:
-//            delegate?.ThemeApplied()
+        //            delegate?.ThemeApplied()
         // MARK: Closure
-        //    замыкание:
-            themeApplied?()
+        themeApplied?()
     }
     
-    func setupView() {
+    private func setupView() {
         view.backgroundColor = Theme.current.themesVCBackgroundColor
         nightImageView.layer.cornerRadius = classicView.bounds.height / 6
         nightImageView.clipsToBounds = true
@@ -109,7 +96,6 @@ class ThemesViewController: UIViewController {
     
 }
 // MARK: Delegate
-    //     делегат:
 //
 //protocol ThemePickerDelegate: class {
 //    func ThemeApplied()

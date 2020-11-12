@@ -86,6 +86,7 @@
         <!--Profile-->
         <scene sceneID="Y8S-bo-RYZ">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Pww-Ed-OnQ" sceneMemberID="firstResponder"/>
                 <viewController id="shD-Of-8Yo" customClass="ProfileViewController" customModule="Chat" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fzm-cE-epe">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
@@ -150,9 +151,6 @@
                                     <constraint firstAttribute="trailing" secondItem="MOG-vb-Yub" secondAttribute="trailing" id="uwl-i7-ZhE"/>
                                 </constraints>
                             </stackView>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="Nfo-JA-XRg">
-                                <rect key="frame" x="188.5" y="456.5" width="37" height="37"/>
-                            </activityIndicatorView>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="22" translatesAutoresizingMaskIntoConstraints="NO" id="kM2-lB-OSh">
                                 <rect key="frame" x="56" y="800" width="302" height="0.0"/>
                                 <subviews>
@@ -191,9 +189,7 @@
                             <constraint firstItem="EyF-yP-Gmn" firstAttribute="top" secondItem="w1u-3k-Wzj" secondAttribute="top" constant="20" id="GDf-Iq-zKQ"/>
                             <constraint firstItem="w1u-3k-Wzj" firstAttribute="trailing" secondItem="kM2-lB-OSh" secondAttribute="trailing" constant="56" id="Joa-0A-45h"/>
                             <constraint firstItem="08G-ZL-dBK" firstAttribute="top" secondItem="EyF-yP-Gmn" secondAttribute="bottom" constant="42" id="OR4-hh-Fq6"/>
-                            <constraint firstItem="Nfo-JA-XRg" firstAttribute="centerY" secondItem="w1u-3k-Wzj" secondAttribute="centerY" id="WHc-Vk-UN2"/>
                             <constraint firstItem="7Hm-3e-OX3" firstAttribute="height" secondItem="EyF-yP-Gmn" secondAttribute="height" id="ag9-f0-IkU"/>
-                            <constraint firstItem="Nfo-JA-XRg" firstAttribute="centerX" secondItem="w1u-3k-Wzj" secondAttribute="centerX" id="cEn-DF-JDR"/>
                             <constraint firstItem="w1u-3k-Wzj" firstAttribute="trailing" secondItem="EyF-yP-Gmn" secondAttribute="trailing" constant="80" id="dv5-BJ-MIY"/>
                             <constraint firstItem="08G-ZL-dBK" firstAttribute="centerX" secondItem="w1u-3k-Wzj" secondAttribute="centerX" id="eR3-Ka-vRP"/>
                             <constraint firstItem="kM2-lB-OSh" firstAttribute="top" secondItem="Z9u-AY-XMX" secondAttribute="bottom" constant="8" symbolic="YES" id="fTr-Fj-U7A"/>
@@ -205,7 +201,6 @@
                     </view>
                     <navigationItem key="navigationItem" title="Profile" id="XnC-i4-XWi"/>
                     <connections>
-                        <outlet property="activityIndicator" destination="Nfo-JA-XRg" id="3Rh-CW-6c8"/>
                         <outlet property="descriptionTextView" destination="01b-LZ-I9X" id="mRv-Rb-lKa"/>
                         <outlet property="editButton" destination="7Hm-3e-OX3" id="fgw-wN-5bM"/>
                         <outlet property="editInfoButton" destination="Z9u-AY-XMX" id="lXf-at-Rh5"/>
@@ -216,7 +211,6 @@
                         <outlet property="profilePictureImageView" destination="EyF-yP-Gmn" id="6Kg-mv-eOi"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Pww-Ed-OnQ" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="704" y="-471"/>
         </scene>

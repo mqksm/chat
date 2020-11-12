@@ -40,14 +40,14 @@ enum Theme: Int {
         }
     }
     
-    //    var alertStyle: UIBlurEffect.Style {
-    //        switch self {
-    //        case .classic, .day:
-    //            return .light
-    //        case .night:
-    //            return .dark
-    //        }
-    //    }
+    var alertStyle: UIBlurEffect.Style {
+        switch self {
+        case .classic, .day:
+            return .light
+        case .night:
+            return .dark
+        }
+    }
     
     var backgroundColor: UIColor {
         switch self {
@@ -140,32 +140,13 @@ enum Theme: Int {
         UITextField.appearance().textColor = textColor
         UITextView.appearance().textColor = textColor
         UITextView.appearance().backgroundColor = backgroundColor
-        UIActivityIndicatorView.appearance().color = mainColor
-        
+        //        UIActivityIndicatorView.appearance().color = mainColor
         UINavigationBar.appearance().barStyle = barStyle
         UINavigationBar.appearance().isTranslucent = false
-        
         UITableView.appearance().backgroundColor = backgroundColor
         UILabel.appearance(whenContainedInInstancesOf: [UITableViewCell.self]).textColor = textColor
-        
-        //        Appearance не позволяет изменить цвет кнопки "отмена" (UIAlertAction style: .cancel). Цвет всегда остается белым.
-        //        В фигме отсутсвует кнопка "отмена", но iOS 12 не поддерживает закрытие алера по тапу на экран.
-        //        Поэтому пока что данную часть кода закомментировал.
-        //        UIView.appearance(whenContainedInInstancesOf: [UIAlertController.self]).tintColor = mainColor
-        //        UIVisualEffectView.appearance(whenContainedInInstancesOf: [UIAlertController.self]).effect = UIBlurEffect(style: alertStyle)
-        //        UILabel.appearance(whenContainedInInstancesOf: [UIAlertController.self]).textColor = textColor
-        
-        //        Использование замыкания убирает необходимость в данном действии.
-        //        Unload all views for each `UIWindow` and add back. Useful for applying `UIAppearance` changes to existing views.
-        //        for _ in 0...1 { // Для iOS 12 достаточно одного вызова, для iOS 14 срабатывает при двух вызовах
-        //            UIApplication.shared.windows.forEach { window in
-        //                window.subviews.forEach { view in
-        //                    view.removeFromSuperview()
-        //                    window.addSubview(view)
-        //                }
-        //            }
-        //        }
-        
+        UIView.appearance(whenContainedInInstancesOf: [UIAlertController.self]).tintColor = mainColor
+        UIVisualEffectView.appearance(whenContainedInInstancesOf: [UIAlertController.self]).effect = UIBlurEffect(style: alertStyle)
+        UILabel.appearance(whenContainedInInstancesOf: [UIAlertController.self]).textColor = textColor
     }
-    
 }

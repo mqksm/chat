@@ -11,12 +11,9 @@ import UIKit
 
 class OperationDataManager: Operation, DataManager {
     
-    class func saveTextDataToFiles(profileVC: ProfileViewController, name: String, description: String, isNameChanged: Bool, isDescriptionChanged: Bool) {
+    class func saveTextDataToFiles(name: String, description: String, isNameChanged: Bool, isDescriptionChanged: Bool) {
         let queue = OperationQueue()
         queue.addOperation({
-            DispatchQueue.main.async {
-                profileVC.activityIndicator.startAnimating()
-            }
             let nameFile = "nameFile.txt"
             let descriptionFile = "descriptionFile.txt"
             if let dir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
@@ -29,14 +26,8 @@ class OperationDataManager: Operation, DataManager {
                     if isDescriptionChanged {
                         try description.write(to: descriptionFileURL, atomically: false, encoding: .utf8)
                     }
-                    DispatchQueue.main.async {
-                        profileVC.showDataSaveAlertController()
-                        profileVC.activityIndicator.stopAnimating()
-                    }
                 } catch {
-                    DispatchQueue.main.async {
-                        profileVC.showOperationDataSaveErrorAlertController()
-                    }
+                    print(error.localizedDescription)
                 }
             }
         })
