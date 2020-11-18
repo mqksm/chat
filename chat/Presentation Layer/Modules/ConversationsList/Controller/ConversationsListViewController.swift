@@ -19,8 +19,9 @@ class ConversationsListViewController: UIViewController {
     private let cellIdentifier = String(describing: ConversationsListTableViewCell.self)
     private lazy var fetchedResultsController: NSFetchedResultsController<ChannelCD> = {
         let fetchRequest: NSFetchRequest<ChannelCD> = ChannelCD.fetchRequest()
-        let sortDescriptor = NSSortDescriptor(key: "name", ascending: true)
-        fetchRequest.sortDescriptors = [sortDescriptor]
+        let sortDateDescriptor = NSSortDescriptor(key: "lastActivity", ascending: false)
+        let sortNameDescriptor = NSSortDescriptor(key: "name", ascending: true)
+        fetchRequest.sortDescriptors = [sortDateDescriptor, sortNameDescriptor]
         let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest,
                                                                   managedObjectContext: CoreDataStack.shared.mainContext,
                                                                   sectionNameKeyPath: nil,

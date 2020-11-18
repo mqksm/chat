@@ -110,7 +110,7 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
     private func saveDataToFile(isWithGCD: Bool) {
         guard let name = nameTextField.text, let description = descriptionTextView.text, nameTextField.text != "", descriptionTextView.text != ""
             else { presentAlertWithTitle(title: "Ошибка", message: "Имя и описание профиля должны быть заполнены", options: "ОК") { (_) in
-            }
+                }
                 return }
         if isWithGCD {
             GCDDataManager.saveTextDataToFiles(name: name,
@@ -142,12 +142,20 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
     
     // MARK: Work with avatar
     @IBAction func editPictureTapped(_ sender: UIButton) {
-        presentAlertWithTitle(title: "Изменить изображение", message: nil, options: "Установить из галереи", "Сделать фото", "Отмена") { (option) in
+        presentAlertWithTitle(title: "Изменить изображение", message: nil, options: "Установить из галереи", "Сделать фото", "Загрузить", "Отмена") { (option) in
             switch option {
             case "Установить из галереи":
                 self.choosePicture()
             case "Сделать фото":
                 self.takePicture()
+            case "Загрузить":
+                let picVC = PicturesViewController()
+                picVC.pictureSelected = { [weak self] image in
+                    self?.profilePictureImageView.image = image
+                    self?.initialsLabel.isHidden = true
+                    GCDDataManager.savePictureToFile(picture: image)
+                }
+                self.present(picVC, animated: true, completion: nil)
             default:
                 break
             }
@@ -186,7 +194,7 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
             profilePictureImageView.image = image
             initialsLabel.isHidden = true
             GCDDataManager.savePictureToFile(picture: image)
-//            OperationDataManager.savePictureToFile(picture: image)
+            //            OperationDataManager.savePictureToFile(picture: image)
         }
     }
     

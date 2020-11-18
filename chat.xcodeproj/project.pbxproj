@@ -13,9 +13,18 @@
 		EF092B102520AAD0002BABA3 /* ConversationsListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF092B0E2520AAD0002BABA3 /* ConversationsListTableViewCell.swift */; };
 		EF092B112520AAD0002BABA3 /* ConversationsListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EF092B0F2520AAD0002BABA3 /* ConversationsListTableViewCell.xib */; };
 		EF17EE102538B8EC005E7AD9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = EF17EE0F2538B8EC005E7AD9 /* GoogleService-Info.plist */; };
+		EF3039252563F666005DE5CA /* RequestsFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF3039242563F666005DE5CA /* RequestsFactory.swift */; };
+		EF3039272563F6BB005DE5CA /* RequestSender.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF3039262563F6BB005DE5CA /* RequestSender.swift */; };
+		EF3039292563F73D005DE5CA /* PicturesListParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF3039282563F73D005DE5CA /* PicturesListParser.swift */; };
+		EF30392B2563F748005DE5CA /* PictureParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF30392A2563F748005DE5CA /* PictureParser.swift */; };
+		EF30392D256414A9005DE5CA /* PicturesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF30392C256414A9005DE5CA /* PicturesCollectionViewCell.swift */; };
+		EF30392F25644497005DE5CA /* Requests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF30392E25644497005DE5CA /* Requests.swift */; };
+		EF30393125644D60005DE5CA /* ParserProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF30393025644D60005DE5CA /* ParserProtocol.swift */; };
+		EF30393325645D49005DE5CA /* PicturesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF30393225645D49005DE5CA /* PicturesManager.swift */; };
 		EF7262C325344928007D94E8 /* GCDDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF7262C225344928007D94E8 /* GCDDataManager.swift */; };
 		EF7262C62534493B007D94E8 /* OperationDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF7262C52534493B007D94E8 /* OperationDataManager.swift */; };
 		EF7262C925344999007D94E8 /* DataManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF7262C825344999007D94E8 /* DataManagerProtocol.swift */; };
+		EF7633F72561710D002BF635 /* PicturesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF7633F62561710D002BF635 /* PicturesViewController.swift */; };
 		EF8708DD252CAB6900EFCE78 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF8708DC252CAB6900EFCE78 /* Theme.swift */; };
 		EF8C64BE255D561400B84D1D /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF8C64BD255D561400B84D1D /* FirebaseManager.swift */; };
 		EF8FA9AE252C907A008FBFAE /* ThemesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF8FA9AC252C907A008FBFAE /* ThemesViewController.swift */; };
@@ -49,9 +58,18 @@
 		EF092B0E2520AAD0002BABA3 /* ConversationsListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationsListTableViewCell.swift; sourceTree = "<group>"; };
 		EF092B0F2520AAD0002BABA3 /* ConversationsListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ConversationsListTableViewCell.xib; sourceTree = "<group>"; };
 		EF17EE0F2538B8EC005E7AD9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		EF3039242563F666005DE5CA /* RequestsFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestsFactory.swift; sourceTree = "<group>"; };
+		EF3039262563F6BB005DE5CA /* RequestSender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestSender.swift; sourceTree = "<group>"; };
+		EF3039282563F73D005DE5CA /* PicturesListParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PicturesListParser.swift; sourceTree = "<group>"; };
+		EF30392A2563F748005DE5CA /* PictureParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureParser.swift; sourceTree = "<group>"; };
+		EF30392C256414A9005DE5CA /* PicturesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PicturesCollectionViewCell.swift; sourceTree = "<group>"; };
+		EF30392E25644497005DE5CA /* Requests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Requests.swift; sourceTree = "<group>"; };
+		EF30393025644D60005DE5CA /* ParserProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParserProtocol.swift; sourceTree = "<group>"; };
+		EF30393225645D49005DE5CA /* PicturesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PicturesManager.swift; sourceTree = "<group>"; };
 		EF7262C225344928007D94E8 /* GCDDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GCDDataManager.swift; sourceTree = "<group>"; };
 		EF7262C52534493B007D94E8 /* OperationDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperationDataManager.swift; sourceTree = "<group>"; };
 		EF7262C825344999007D94E8 /* DataManagerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManagerProtocol.swift; sourceTree = "<group>"; };
+		EF7633F62561710D002BF635 /* PicturesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PicturesViewController.swift; sourceTree = "<group>"; };
 		EF8708DC252CAB6900EFCE78 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		EF8C64BD255D561400B84D1D /* FirebaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
 		EF8FA9AC252C907A008FBFAE /* ThemesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemesViewController.swift; sourceTree = "<group>"; };
@@ -107,33 +125,71 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		EF1415FD252C79D2004EF80D /* ProfileViewController */ = {
+		EF1415FD252C79D2004EF80D /* Profile */ = {
 			isa = PBXGroup;
 			children = (
 				EF8C64CB255D853B00B84D1D /* View */,
 				EF8C64CA255D852900B84D1D /* Controller */,
 			);
-			path = ProfileViewController;
+			path = Profile;
 			sourceTree = "<group>";
 		};
-		EF1415FF252C7A89004EF80D /* ConversationViewController */ = {
+		EF1415FF252C7A89004EF80D /* Conversation */ = {
 			isa = PBXGroup;
 			children = (
 				EF8C64C7255D849600B84D1D /* Model */,
 				EF8C64C8255D84B500B84D1D /* View */,
 				EF8C64C9255D84C500B84D1D /* Controller */,
 			);
-			path = ConversationViewController;
+			path = Conversation;
 			sourceTree = "<group>";
 		};
-		EF141601252C7AAA004EF80D /* ConversationsListViewController */ = {
+		EF141601252C7AAA004EF80D /* ConversationsList */ = {
 			isa = PBXGroup;
 			children = (
 				EF8C64C4255D7E9700B84D1D /* Model */,
 				EF8C64C6255D7EB400B84D1D /* View */,
 				EF8C64C5255D7EAB00B84D1D /* Controller */,
 			);
-			path = ConversationsListViewController;
+			path = ConversationsList;
+			sourceTree = "<group>";
+		};
+		EF3039232563F623005DE5CA /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				EF3039242563F666005DE5CA /* RequestsFactory.swift */,
+				EF3039262563F6BB005DE5CA /* RequestSender.swift */,
+				EF30392E25644497005DE5CA /* Requests.swift */,
+				EF3039282563F73D005DE5CA /* PicturesListParser.swift */,
+				EF30392A2563F748005DE5CA /* PictureParser.swift */,
+				EF30393025644D60005DE5CA /* ParserProtocol.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		EF30393625656E46005DE5CA /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				EF7633F62561710D002BF635 /* PicturesViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		EF30393725656E51005DE5CA /* View */ = {
+			isa = PBXGroup;
+			children = (
+				EF30392C256414A9005DE5CA /* PicturesCollectionViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		EF7633F5256170E4002BF635 /* Pictures */ = {
+			isa = PBXGroup;
+			children = (
+				EF30393625656E46005DE5CA /* Controller */,
+				EF30393725656E51005DE5CA /* View */,
+			);
+			path = Pictures;
 			sourceTree = "<group>";
 		};
 		EF865A94255962E400FEF2DE /* Supporting Files */ = {
@@ -166,6 +222,7 @@
 		EF8C64C1255D76BF00B84D1D /* Core Layer */ = {
 			isa = PBXGroup;
 			children = (
+				EF3039232563F623005DE5CA /* Network */,
 				EF910F9B2547FF8100092A52 /* Chat.xcdatamodeld */,
 				EF910F9E2548190F00092A52 /* CoreDataStack.swift */,
 				EF92847F2523A17D0018439D /* ConfigurableViewProtocol.swift */,
@@ -177,10 +234,11 @@
 		EF8C64C2255D7C9500B84D1D /* Modules */ = {
 			isa = PBXGroup;
 			children = (
-				EF141601252C7AAA004EF80D /* ConversationsListViewController */,
-				EF1415FF252C7A89004EF80D /* ConversationViewController */,
-				EF1415FD252C79D2004EF80D /* ProfileViewController */,
-				EFB97927252D90AC0075F11F /* ThemesViewController */,
+				EF7633F5256170E4002BF635 /* Pictures */,
+				EF141601252C7AAA004EF80D /* ConversationsList */,
+				EF1415FF252C7A89004EF80D /* Conversation */,
+				EF1415FD252C79D2004EF80D /* Profile */,
+				EFB97927252D90AC0075F11F /* Themes */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -193,6 +251,7 @@
 				EF8C64BD255D561400B84D1D /* FirebaseManager.swift */,
 				EF97DF29255D8FAA006EDE90 /* CoreDataManager.swift */,
 				EF8708DC252CAB6900EFCE78 /* Theme.swift */,
+				EF30393225645D49005DE5CA /* PicturesManager.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -283,13 +342,13 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		EFB97927252D90AC0075F11F /* ThemesViewController */ = {
+		EFB97927252D90AC0075F11F /* Themes */ = {
 			isa = PBXGroup;
 			children = (
 				EF8C64CC255D861400B84D1D /* Controller */,
 				EF8C64CD255D861F00B84D1D /* View */,
 			);
-			path = ThemesViewController;
+			path = Themes;
 			sourceTree = "<group>";
 		};
 		EFD3D0D5255AD85B006AECC9 /* Extentions */ = {
@@ -480,16 +539,25 @@
 				EF9284802523A17D0018439D /* ConfigurableViewProtocol.swift in Sources */,
 				EF092B102520AAD0002BABA3 /* ConversationsListTableViewCell.swift in Sources */,
 				EF092B0C2520A46E002BABA3 /* ConversationsListViewController.swift in Sources */,
+				EF30393325645D49005DE5CA /* PicturesManager.swift in Sources */,
 				EF92848C2523B8A70018439D /* OutcomingMessageCell.swift in Sources */,
+				EF3039252563F666005DE5CA /* RequestsFactory.swift in Sources */,
 				EFF79D7A250F7C1E00815ED3 /* ProfileViewController.swift in Sources */,
+				EF7633F72561710D002BF635 /* PicturesViewController.swift in Sources */,
 				EF8C64BE255D561400B84D1D /* FirebaseManager.swift in Sources */,
+				EF30393125644D60005DE5CA /* ParserProtocol.swift in Sources */,
 				EFD6F7B5253AE484004EBB94 /* MessageModel.swift in Sources */,
 				EF7262C925344999007D94E8 /* DataManagerProtocol.swift in Sources */,
+				EF3039272563F6BB005DE5CA /* RequestSender.swift in Sources */,
 				EFD6F7B3253AE457004EBB94 /* ChannelModel.swift in Sources */,
 				EF7262C62534493B007D94E8 /* OperationDataManager.swift in Sources */,
+				EF3039292563F73D005DE5CA /* PicturesListParser.swift in Sources */,
+				EF30392F25644497005DE5CA /* Requests.swift in Sources */,
 				EF8FA9AE252C907A008FBFAE /* ThemesViewController.swift in Sources */,
+				EF30392D256414A9005DE5CA /* PicturesCollectionViewCell.swift in Sources */,
 				EF910F9D2547FF8100092A52 /* Chat.xcdatamodeld in Sources */,
 				EF97DF2A255D8FAA006EDE90 /* CoreDataManager.swift in Sources */,
+				EF30392B2563F748005DE5CA /* PictureParser.swift in Sources */,
 				EFF79D76250F7C1E00815ED3 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
