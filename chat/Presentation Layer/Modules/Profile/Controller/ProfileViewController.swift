@@ -155,7 +155,7 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
                     self?.initialsLabel.isHidden = true
                     GCDDataManager.savePictureToFile(picture: image)
                 }
-                self.present(picVC, animated: true, completion: nil)
+                self.present(UINavigationController(rootViewController: picVC), animated: true)
             default:
                 break
             }

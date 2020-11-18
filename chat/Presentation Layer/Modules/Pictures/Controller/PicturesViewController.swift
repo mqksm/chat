@@ -10,6 +10,8 @@ import UIKit
 
 class PicturesViewController: UIViewController {
     
+    // MARK: - Properties
+    
     private let activityIndicator = UIActivityIndicatorView()
     private let cellIdentifier = String(describing: PicturesCollectionViewCell.self)
     private var pictureLinks = [PictureLinkModel]()
@@ -35,14 +37,20 @@ class PicturesViewController: UIViewController {
     
     var pictureSelected: ((UIImage) -> Void)?
     
+    // MARK: - UIViewController lifecycle methods
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = Theme.current.backgroundColor
+        self.title = "Выберите изображение"
+        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancelTapped))
         view.addSubview(collectionView)
         view.addSubview(activityIndicator)
         setupConstraints()
         loadPicturesLinksList()
     }
+    
+    // MARK: - Methods
     
     private func setupConstraints() {
         NSLayoutConstraint.activate([
@@ -74,7 +82,13 @@ class PicturesViewController: UIViewController {
         }
     }
     
+    @objc func cancelTapped() {
+        dismiss(animated: true, completion: nil)
+    }
+    
 }
+
+// MARK: - UICollectionViewDataSource, UICollectionViewDelegate
 
 extension PicturesViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     
