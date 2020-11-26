@@ -13,6 +13,7 @@
 		EF092B102520AAD0002BABA3 /* ConversationsListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF092B0E2520AAD0002BABA3 /* ConversationsListTableViewCell.swift */; };
 		EF092B112520AAD0002BABA3 /* ConversationsListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EF092B0F2520AAD0002BABA3 /* ConversationsListTableViewCell.xib */; };
 		EF17EE102538B8EC005E7AD9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = EF17EE0F2538B8EC005E7AD9 /* GoogleService-Info.plist */; };
+		EF218B60256FBBC0007B45F2 /* AnimationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF218B5F256FBBC0007B45F2 /* AnimationManager.swift */; };
 		EF2CFB34256E33BA00D6692F /* AnimationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF2CFB33256E33BA00D6692F /* AnimationHandler.swift */; };
 		EF3039252563F666005DE5CA /* RequestsFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF3039242563F666005DE5CA /* RequestsFactory.swift */; };
 		EF3039272563F6BB005DE5CA /* RequestSender.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF3039262563F6BB005DE5CA /* RequestSender.swift */; };
@@ -59,6 +60,7 @@
 		EF092B0E2520AAD0002BABA3 /* ConversationsListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationsListTableViewCell.swift; sourceTree = "<group>"; };
 		EF092B0F2520AAD0002BABA3 /* ConversationsListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ConversationsListTableViewCell.xib; sourceTree = "<group>"; };
 		EF17EE0F2538B8EC005E7AD9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		EF218B5F256FBBC0007B45F2 /* AnimationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationManager.swift; sourceTree = "<group>"; };
 		EF2CFB33256E33BA00D6692F /* AnimationHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationHandler.swift; sourceTree = "<group>"; };
 		EF3039242563F666005DE5CA /* RequestsFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestsFactory.swift; sourceTree = "<group>"; };
 		EF3039262563F6BB005DE5CA /* RequestSender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestSender.swift; sourceTree = "<group>"; };
@@ -208,6 +210,7 @@
 		EF89C8F3256CFFF2007DAFCE /* Animation */ = {
 			isa = PBXGroup;
 			children = (
+				EF218B5F256FBBC0007B45F2 /* AnimationManager.swift */,
 				EF2CFB33256E33BA00D6692F /* AnimationHandler.swift */,
 			);
 			path = Animation;
@@ -543,6 +546,7 @@
 			files = (
 				EFD7BB2D252D9B2000D6120E /* ConversationViewController.swift in Sources */,
 				EF9284872523ABC80018439D /* IncomingMessageCell.swift in Sources */,
+				EF218B60256FBBC0007B45F2 /* AnimationManager.swift in Sources */,
 				EFD3D0D7255AD87A006AECC9 /* UIViewController.swift in Sources */,
 				EF910F9F2548190F00092A52 /* CoreDataStack.swift in Sources */,
 				EF7262C325344928007D94E8 /* GCDDataManager.swift in Sources */,

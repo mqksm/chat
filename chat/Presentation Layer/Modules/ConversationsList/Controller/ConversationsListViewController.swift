@@ -85,7 +85,7 @@ class ConversationsListViewController: UIViewController {
         let save = UIAlertAction(title: "Создать", style: .default) { [weak self] _ in
             guard let textField = alertController.textFields?.first, textField.text != "" else {
                 self?.presentAlertWithTitle(title: "Ошибка", message: "Название канала не должно быть пустым!", options: "ОК") { (_) in
-            }
+                }
                 return }
             if let channelName = textField.text {
                 FirebaseManager.shared.addChannel(name: channelName)
@@ -95,6 +95,10 @@ class ConversationsListViewController: UIViewController {
         alertController.addAction(save)
         alertController.addAction(cancel)
         present(alertController, animated: true, completion: nil)
+    }
+    
+    @IBAction func profileButtonTapped(_ sender: UIButton) {
+        performSegue(withIdentifier: "showProfile", sender: sender)
     }
 
 }
@@ -128,7 +132,7 @@ extension ConversationsListViewController: UITableViewDataSource, UITableViewDel
         let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { _, _, _ in
             let channel = self.fetchedResultsController.object(at: indexPath)
             FirebaseManager.shared.deleteChannel(channel: channel)
-//            self.reference.document(channel.identifier ?? "").delete()
+            //            self.reference.document(channel.identifier ?? "").delete()
             CoreDataManager.shared.deleteChannel(channel: channel)
         }
         return UISwipeActionsConfiguration(actions: [deleteAction])
@@ -183,3 +187,32 @@ extension ConversationsListViewController: UITableViewDataSource, UITableViewDel
 //    }
 //
 //}
+
+// MARK: - Prepare for Segue
+
+extension ConversationsListViewController {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let profileViewController = segue.destination as? ProfileViewController else { return }
+        profileViewController.transitioningDelegate = self
+        profileViewController.modalPresentationStyle = .overCurrentContext
+    }
+}
+
+// MARK: - UIViewControllerTransitioningDelegate
+
+extension ConversationsListViewController: UIViewControllerTransitioningDelegate {
+    
+    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        guard let imageSuperview = profileImageButton.superview else { return nil }
+        let transition = AnimationManager(duration: 0.8)
+        transition.originFrame = imageSuperview.convert(profileImageButton.frame, to: nil)
+        transition.originFrame = CGRect(
+            x: transition.originFrame.origin.x,
+            y: transition.originFrame.origin.y,
+            width: transition.originFrame.size.width - 40,
+            height: transition.originFrame.size.height - 40
+        )
+        return transition
+    }
+    
+}

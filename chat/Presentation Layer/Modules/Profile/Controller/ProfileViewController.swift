@@ -65,6 +65,10 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
     
     // MARK: User interaction
     
+    @IBAction func backButtonTapped(_ sender: UIButton) {
+        dismiss(animated: true)
+    }
+    
     @IBAction func editInfoButtonTapped(_ sender: UIButton) {
         changeItemsConfigure()
         if !isProfileEditing {
