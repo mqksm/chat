@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="xRF-H4-bEf">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="xRF-H4-bEf">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -21,14 +20,14 @@
                                 <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                             </tableView>
                         </subviews>
-                        <viewLayoutGuide key="safeArea" id="SSg-jC-klj"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="SSg-jC-klj" firstAttribute="bottom" secondItem="m1J-EP-BTe" secondAttribute="bottom" id="TXf-Ta-2uE"/>
                             <constraint firstItem="m1J-EP-BTe" firstAttribute="leading" secondItem="SSg-jC-klj" secondAttribute="leading" id="TZN-Zs-pCt"/>
                             <constraint firstItem="m1J-EP-BTe" firstAttribute="top" secondItem="SSg-jC-klj" secondAttribute="top" id="djw-lq-Fc4"/>
                             <constraint firstItem="SSg-jC-klj" firstAttribute="trailing" secondItem="m1J-EP-BTe" secondAttribute="trailing" id="f2y-61-Dfy"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="SSg-jC-klj"/>
                     </view>
                     <navigationItem key="navigationItem" title="Channels" id="mXN-f7-dj8">
                         <barButtonItem key="leftBarButtonItem" title="Item" image="GearIcon" id="Su7-nH-shZ">
@@ -42,23 +41,14 @@
                                     <action selector="addChannelTapped:" destination="gvX-iB-Ggh" id="rgF-DS-9RC"/>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem id="QlY-4p-Tje">
-                                <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="GGT-2d-oby">
-                                    <rect key="frame" x="323.5" y="7" width="30" height="30"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <color key="backgroundColor" red="0.89411764709999997" green="0.90980392160000001" blue="0.16862745100000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    <state key="normal" title="MD">
-                                        <color key="titleColor" systemColor="labelColor"/>
-                                    </state>
-                                    <connections>
-                                        <segue destination="SbV-dN-aSP" kind="show" id="F37-jb-Hp1"/>
-                                    </connections>
-                                </button>
+                            <barButtonItem title="Profile" image="Person" id="IqQ-mN-uyn">
+                                <connections>
+                                    <segue destination="SbV-dN-aSP" kind="show" id="Dtb-Xq-vC8"/>
+                                </connections>
                             </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
                     <connections>
-                        <outlet property="profileImageButton" destination="GGT-2d-oby" id="gvC-vn-Vba"/>
                         <outlet property="tableView" destination="m1J-EP-BTe" id="3KE-tP-eHx"/>
                     </connections>
                 </viewController>
@@ -97,11 +87,6 @@
     </scenes>
     <resources>
         <image name="GearIcon" width="25" height="25"/>
-        <systemColor name="labelColor">
-            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
+        <image name="Person" width="26" height="25"/>
     </resources>
 </document>

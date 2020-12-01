@@ -15,7 +15,6 @@ class ConversationsListViewController: UIViewController {
     // MARK: - Properties
     
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var profileImageButton: UIButton!
     private let cellIdentifier = String(describing: ConversationsListTableViewCell.self)
     private lazy var fetchedResultsController: NSFetchedResultsController<ChannelCD> = {
         let fetchRequest: NSFetchRequest<ChannelCD> = ChannelCD.fetchRequest()
@@ -36,11 +35,6 @@ class ConversationsListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
-    }
-    
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        profileImageButton.layer.cornerRadius = profileImageButton.bounds.height / 2
     }
     
     override func viewWillAppear(_ animated: Bool) {

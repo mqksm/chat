@@ -25,6 +25,7 @@
 		EF7262C325344928007D94E8 /* GCDDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF7262C225344928007D94E8 /* GCDDataManager.swift */; };
 		EF7262C62534493B007D94E8 /* OperationDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF7262C52534493B007D94E8 /* OperationDataManager.swift */; };
 		EF7262C925344999007D94E8 /* DataManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF7262C825344999007D94E8 /* DataManagerProtocol.swift */; };
+		EF73E48B257626B200AADC2D /* ChatUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF73E48A257626B200AADC2D /* ChatUITests.swift */; };
 		EF7633F72561710D002BF635 /* PicturesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF7633F62561710D002BF635 /* PicturesViewController.swift */; };
 		EF8708DD252CAB6900EFCE78 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF8708DC252CAB6900EFCE78 /* Theme.swift */; };
 		EF8C64BE255D561400B84D1D /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF8C64BD255D561400B84D1D /* FirebaseManager.swift */; };
@@ -50,6 +51,16 @@
 		EFF79D82250F7C2200815ED3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EFF79D80250F7C2200815ED3 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		EF73E48D257626B200AADC2D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EFF79D6A250F7C1E00815ED3 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EFF79D71250F7C1E00815ED3;
+			remoteInfo = chat;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		43768A1AC8D57BA61A589CA9 /* Pods_chat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_chat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		946F8A23266918A9E087D08D /* Pods-chat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-chat.release.xcconfig"; path = "Target Support Files/Pods-chat/Pods-chat.release.xcconfig"; sourceTree = "<group>"; };
@@ -71,6 +82,9 @@
 		EF7262C225344928007D94E8 /* GCDDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GCDDataManager.swift; sourceTree = "<group>"; };
 		EF7262C52534493B007D94E8 /* OperationDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperationDataManager.swift; sourceTree = "<group>"; };
 		EF7262C825344999007D94E8 /* DataManagerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManagerProtocol.swift; sourceTree = "<group>"; };
+		EF73E488257626B200AADC2D /* ChatUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ChatUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		EF73E48A257626B200AADC2D /* ChatUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatUITests.swift; sourceTree = "<group>"; };
+		EF73E48C257626B200AADC2D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EF7633F62561710D002BF635 /* PicturesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PicturesViewController.swift; sourceTree = "<group>"; };
 		EF8708DC252CAB6900EFCE78 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		EF8C64BD255D561400B84D1D /* FirebaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
@@ -99,6 +113,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		EF73E485257626B200AADC2D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		EFF79D6F250F7C1E00815ED3 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -183,6 +204,15 @@
 				EF30392C256414A9005DE5CA /* PicturesCollectionViewCell.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		EF73E489257626B200AADC2D /* ChatUITests */ = {
+			isa = PBXGroup;
+			children = (
+				EF73E48A257626B200AADC2D /* ChatUITests.swift */,
+				EF73E48C257626B200AADC2D /* Info.plist */,
+			);
+			path = ChatUITests;
 			sourceTree = "<group>";
 		};
 		EF7633F5256170E4002BF635 /* Pictures */ = {
@@ -374,6 +404,7 @@
 			isa = PBXGroup;
 			children = (
 				EFF79D74250F7C1E00815ED3 /* chat */,
+				EF73E489257626B200AADC2D /* ChatUITests */,
 				EFF79D73250F7C1E00815ED3 /* Products */,
 				088A1E603D801380D38B6B01 /* Pods */,
 				773C442EEE2362B1CE5F96FC /* Frameworks */,
@@ -384,6 +415,7 @@
 			isa = PBXGroup;
 			children = (
 				EFF79D72250F7C1E00815ED3 /* Chat.app */,
+				EF73E488257626B200AADC2D /* ChatUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -404,6 +436,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		EF73E487257626B200AADC2D /* ChatUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EF73E48F257626B200AADC2D /* Build configuration list for PBXNativeTarget "ChatUITests" */;
+			buildPhases = (
+				EF73E484257626B200AADC2D /* Sources */,
+				EF73E485257626B200AADC2D /* Frameworks */,
+				EF73E486257626B200AADC2D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				EF73E48E257626B200AADC2D /* PBXTargetDependency */,
+			);
+			name = ChatUITests;
+			productName = ChatUITests;
+			productReference = EF73E488257626B200AADC2D /* ChatUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 		EFF79D71250F7C1E00815ED3 /* chat */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = EFF79D86250F7C2200815ED3 /* Build configuration list for PBXNativeTarget "chat" */;
@@ -430,10 +480,14 @@
 		EFF79D6A250F7C1E00815ED3 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1170;
+				LastSwiftUpdateCheck = 1160;
 				LastUpgradeCheck = 1200;
 				ORGANIZATIONNAME = Maxim;
 				TargetAttributes = {
+					EF73E487257626B200AADC2D = {
+						CreatedOnToolsVersion = 11.6;
+						TestTargetID = EFF79D71250F7C1E00815ED3;
+					};
 					EFF79D71250F7C1E00815ED3 = {
 						CreatedOnToolsVersion = 11.7;
 					};
@@ -453,11 +507,19 @@
 			projectRoot = "";
 			targets = (
 				EFF79D71250F7C1E00815ED3 /* chat */,
+				EF73E487257626B200AADC2D /* ChatUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		EF73E486257626B200AADC2D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		EFF79D70250F7C1E00815ED3 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -537,6 +599,14 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		EF73E484257626B200AADC2D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EF73E48B257626B200AADC2D /* ChatUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		EFF79D6E250F7C1E00815ED3 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -576,6 +646,14 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		EF73E48E257626B200AADC2D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = EFF79D71250F7C1E00815ED3 /* chat */;
+			targetProxy = EF73E48D257626B200AADC2D /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
 		EFF79D7B250F7C1E00815ED3 /* ConversationsList.storyboard */ = {
 			isa = PBXVariantGroup;
@@ -596,6 +674,44 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		EF73E490257626B200AADC2D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = ChatUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = ru.tinkoff.TinkoffChat.ChatUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = chat;
+			};
+			name = Debug;
+		};
+		EF73E491257626B200AADC2D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = ChatUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = ru.tinkoff.TinkoffChat.ChatUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = chat;
+			};
+			name = Release;
+		};
 		EFF79D84250F7C2200815ED3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -759,6 +875,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		EF73E48F257626B200AADC2D /* Build configuration list for PBXNativeTarget "ChatUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EF73E490257626B200AADC2D /* Debug */,
+				EF73E491257626B200AADC2D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		EFF79D6D250F7C1E00815ED3 /* Build configuration list for PBXProject "chat" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
