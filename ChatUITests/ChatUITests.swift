@@ -18,8 +18,10 @@ class ChatUITests: XCTestCase {
         let app = XCUIApplication()
         app.launch()
         XCUIApplication().navigationBars["Channels"].buttons["Profile"].tap()
-        XCTAssertTrue(app.textFields.element.firstMatch.exists)
-        XCTAssertTrue(app.textViews.element.firstMatch.exists)
+//        XCTAssertTrue(app.textFields.element.firstMatch.exists)
+//        XCTAssertTrue(app.textViews.element.firstMatch.exists)
+        XCTAssertTrue(app.textFields.element.firstMatch.waitForExistence(timeout: 1))
+        XCTAssertTrue(app.textViews.element.firstMatch.waitForExistence(timeout: 1))
     }
 
     func testLaunchPerformance() throws {
