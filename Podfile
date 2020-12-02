@@ -7,8 +7,10 @@ target 'chat' do
 
   # Pods for chat
 
-  pod 'Firebase/Firestore'
-  pod 'Firebase/Storage'
-  pod 'SwiftLint'
-
+pod 'Firebase/Firestore'
+pod 'SwiftLint'
+target 'ChatTests' do
+  inherit! :search_paths
 end
+end
+
