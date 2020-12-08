@@ -1,0 +1,14 @@
+//
+//  Config.xcconfig
+//  chat
+//
+//  Created by Maks on 08.12.2020.
+//  Copyright © 2020 Maxim. All rights reserved.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974
+
+PIXABAY_API = pixabay.com/api/
+PIXABAY_TOKEN = 19149259-4d7a91149364b38856f981c95
+

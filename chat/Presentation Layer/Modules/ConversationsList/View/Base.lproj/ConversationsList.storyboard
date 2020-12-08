@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="xRF-H4-bEf">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Channels-->
+        <scene sceneID="0LV-C6-Sx2">
+            <objects>
+                <viewController id="gvX-iB-Ggh" customClass="ConversationsListViewController" customModule="Chat" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="v44-hd-wp6">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="m1J-EP-BTe">
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="SSg-jC-klj" firstAttribute="bottom" secondItem="m1J-EP-BTe" secondAttribute="bottom" id="TXf-Ta-2uE"/>
+                            <constraint firstItem="m1J-EP-BTe" firstAttribute="leading" secondItem="SSg-jC-klj" secondAttribute="leading" id="TZN-Zs-pCt"/>
+                            <constraint firstItem="m1J-EP-BTe" firstAttribute="top" secondItem="SSg-jC-klj" secondAttribute="top" id="djw-lq-Fc4"/>
+                            <constraint firstItem="SSg-jC-klj" firstAttribute="trailing" secondItem="m1J-EP-BTe" secondAttribute="trailing" id="f2y-61-Dfy"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="SSg-jC-klj"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Channels" id="mXN-f7-dj8">
+                        <barButtonItem key="leftBarButtonItem" title="Item" image="GearIcon" id="Su7-nH-shZ">
+                            <connections>
+                                <action selector="settingsButtonTapped:" destination="gvX-iB-Ggh" id="E9p-T2-s9n"/>
+                            </connections>
+                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem systemItem="add" id="XZQ-6s-kf1">
+                                <connections>
+                                    <action selector="addChannelTapped:" destination="gvX-iB-Ggh" id="rgF-DS-9RC"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="Profile" image="Person" id="IqQ-mN-uyn">
+                                <connections>
+                                    <segue destination="SbV-dN-aSP" kind="show" id="Dtb-Xq-vC8"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="tableView" destination="m1J-EP-BTe" id="3KE-tP-eHx"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zvJ-Si-XH5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-63.200000000000003" y="160.56971514242881"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="hRe-YR-yPK">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="xRF-H4-bEf" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="FIB-d7-2gm">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="gvX-iB-Ggh" kind="relationship" relationship="rootViewController" id="cyN-km-weT"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VgI-Sk-oUl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-794" y="160"/>
+        </scene>
+        <!--Profile-->
+        <scene sceneID="aaL-Ol-5vZ">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Profile" id="SbV-dN-aSP" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="VuR-jY-1n2"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3Iv-NM-STS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="490" y="159"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="GearIcon" width="25" height="25"/>
+        <image name="Person" width="26" height="25"/>
+    </resources>
+</document>
