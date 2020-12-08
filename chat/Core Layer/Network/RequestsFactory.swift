@@ -13,7 +13,7 @@ struct RequestsFactory {
     struct PictureRequests {
         
         static func picturesLinksConfig() -> RequestConfig<PicturesListParser> {
-            let request = PicturesListRequest(apiKey: "19149259-4d7a91149364b38856f981c95", limit: 102)
+            let request = PicturesListRequest(limit: 102)
             return RequestConfig<PicturesListParser>(request: request, parser: PicturesListParser())
         }
         
